@@ -9,8 +9,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="{{ asset('assets/img/favicon.png')}}" rel="icon">
-  <link href="{{ asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="{{ asset('assets/img/logo/walktogether.png')}}" rel="icon">
+  <link href="{{ asset('assets/img/logo/walktogether.png')}}" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="{{ asset('https://fonts.googleapis.com')}}" rel="preconnect">
@@ -42,32 +42,20 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <img src="assets/img/logo.png" alt="">
+        <img src="assets/img/logo/walktogether.png" alt="">
         <h1 class="sitename">Walk Together</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html#hero" class="active">Home</a></li>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#features">Features</a></li>
-          <li><a href="index.html#services">Services</a></li>
-          <li><a href="index.html#pricing">Pricing</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li><a href="index.html#about">Informasi Program</a></li>
+          <li><a href="index.html#features">Tips & Trik</a></li>
+          <li><a href="index.html#services">Komunitas</a></li>
+          <li class="dropdown"><a href="#"><span>Kelas</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
+              <li><a href="#">Webinar</a></li>
+              <li><a href="#">Mentoring</a></li>
             </ul>
           </li>
           <li><a href="index.html#contact">Contact</a></li>
@@ -75,7 +63,7 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="index.html#about">Get Started</a>
+      <a class="btn-getstarted" href="/login">Daftar/Masuk</a>
 
     </div>
   </header>
@@ -92,7 +80,7 @@
           <h1 data-aos="fade-up">Welcome to <span>Walk Together</span></h1>
           <p data-aos="fade-up" data-aos-delay="100">Raih Peluang Akademis dan Karirmu<br></p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-            <a href="#about" class="btn-get-started">Get Started</a>
+            <a href="#about" class="btn-get-started">Informasi Program</a>
             <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
           </div>
           <img src="assets/img/hero-services-img.webp" class="img-fluid hero-img" alt="" data-aos="zoom-out" data-aos-delay="300">
@@ -233,7 +221,7 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Features</h2>
+        <h2>Tips & Trik</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
       </div><!-- End Section Title -->
 
