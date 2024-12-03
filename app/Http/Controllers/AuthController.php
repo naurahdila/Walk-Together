@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,21 +41,14 @@ class AuthController extends Controller
     // Menangani proses register
     public function register(Request $request)
     {
-        // Validasi input
-        $request->validate([
-            'username' => 'required|string|unique:users,username',
-            'email' => 'required|string|email|unique:users,email',
-            'password' => 'required|string|confirmed',
-            'role_id' => 'required|exists:roles,id', // Pastikan role_id ada
-        ]);
+        $table= [
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => $request->password,
+            'role_id' => $request->role_id,
+        ];
 
-        // Membuat user baru
-        $user = new User();
-        $user->username = $request->username;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->role_id = $request->role_id;  // Menyimpan role_id
-        $user->save();
+        User::create($table);
 
         // Mengarahkan ke halaman login
         return redirect()->route('login')->with('success', 'Registration successful, please login.');
