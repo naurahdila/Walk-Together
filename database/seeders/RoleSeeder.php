@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Role;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class RoleSeeder extends Seeder
@@ -13,8 +14,9 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        // Menambahkan data role ke tabel roles
-        Role::create(['username' => 'Admin']);
-        Role::create(['username' => 'User']);
+        DB::table('roles')->insert([
+            ['username' => 'admin'],
+            ['username' => 'user'],
+        ]);
     }
 }
