@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Providers;
-
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use App\Http\Middleware\AuthCheckMiddleware;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,11 +15,14 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
+    
+
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+    public function boot()
     {
-        //
+        // Mendaftarkan middleware kustom
+        Route::aliasMiddleware('auth-check', AuthCheckMiddleware::class);
     }
 }

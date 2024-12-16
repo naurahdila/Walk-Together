@@ -51,13 +51,14 @@
           <li><a href="index.html#hero" class="active">Home</a></li>
           <li><a href="index.html#about">Informasi Program</a></li>
           <li><a href="index.html#features">Tips & Trik</a></li>
-          <li><a href="index.html#services">Komunitas</a></li>
-          <li class="dropdown"><a href="#"><span>Kelas</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li><a href="index.html#services">Kelas</a></li>
+          <li><a href="index.html">Komunitas</a></li>
+          {{-- <li class="dropdown"><a href="#"><span>Kelas</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Webinar</a></li>
               <li><a href="#">Mentoring</a></li>
             </ul>
-          </li>
+          </li> --}}
           <li><a href="index.html#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -355,7 +356,7 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Services</h2>
+        <h2>Services Walk Together</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
       </div><!-- End Section Title -->
 
@@ -367,9 +368,9 @@
             <div class="service-item item-cyan position-relative">
               <i class="bi bi-activity icon"></i>
               <div>
-                <h3>Nesciunt Mete</h3>
+                <h3>Kelas Bimbingan Beasiswa</h3>
                 <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
-                <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
+                <a href="{{ route('detail_beasiswa') }}" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -378,9 +379,9 @@
             <div class="service-item item-orange position-relative">
               <i class="bi bi-broadcast icon"></i>
               <div>
-                <h3>Eosle Commodi</h3>
+                <h3>Kelas Bimbingan Magang MSIB</h3>
                 <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
-                <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
+                <a href=# >Komunitas</a></li>" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -389,7 +390,7 @@
             <div class="service-item item-teal position-relative">
               <i class="bi bi-easel icon"></i>
               <div>
-                <h3>Ledo Markt</h3>
+                <h3>Mentoring Lomba Essay dan KTI</h3>
                 <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
                 <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
@@ -400,7 +401,7 @@
             <div class="service-item item-red position-relative">
               <i class="bi bi-bounding-box-circles icon"></i>
               <div>
-                <h3>Asperiores Commodi</h3>
+                <h3>Mentoring Mahasiswa Berprestasi</h3>
                 <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
                 <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
@@ -411,7 +412,7 @@
             <div class="service-item item-indigo position-relative">
               <i class="bi bi-calendar4-week icon"></i>
               <div>
-                <h3>Velit Doloremque.</h3>
+                <h3>Kelas Freshgraduate Persiapan Karir</h3>
                 <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
                 <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
@@ -422,7 +423,7 @@
             <div class="service-item item-pink position-relative">
               <i class="bi bi-chat-square-text icon"></i>
               <div>
-                <h3>Dolori Architecto</h3>
+                <h3>Kelas Bimbingan Kewirausahaan</h3>
                 <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
                 <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
