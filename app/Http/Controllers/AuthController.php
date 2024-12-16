@@ -23,7 +23,7 @@ class AuthController extends Controller
         return view('auth.register', compact('roles'));
     }
 
-    // Menangani proses login
+    
     public function login(Request $request)
     {
         $request->validate([
@@ -66,4 +66,5 @@ class AuthController extends Controller
     public function dashboard(){
         return view('layout.main');
     }    
+
 }
