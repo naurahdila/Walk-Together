@@ -26,17 +26,20 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout'); // Pro
 Route::middleware([AuthCheckMiddleware::class ])->group(function () {
     Route::get('/dashboard', [process_registration::class, 'dashboard'])->name('dashboard');
     Route::get('/detail_beasiswa', [process_registration::class, 'showProduct'])->name('detail_beasiswa')->defaults('category', 'beasiswa');
-    Route::get('/transaction/pay/{id}', [process_registration::class, 'getSnapToken'])->name('transaction.pay');
-    // Route::post('/transaction/pay/{id}', [process_registration::class, 'getSnapToken'])->name('transaction.pay.post');
+    // Route::get('/transaction/pay/{id}', [process_registration::class, 'getSnapToken'])->name('transaction.pay');
+    // Route::post('/transaction/pay/{id}', [process_registration::class, 'getSnapToken'])->name('transaction.pay');
    
 
 
     Route::post('/pendaftaraan', [process_registration::class, 'store'])->name('registration.store');
-    // Route::get('/pendaftaran/success', function() { return "Data Berhasil Disimpan!";})->name('registration.success');
+    Route::get('/pendaftaran/success', function() { return "Data Berhasil Disimpan!";})->name('registration.success');
 
     Route::get('/user/transactions', [user_detailtransaksi::class, 'index'])->name('user.detailtransaksi');
+    Route::post('/user/transactions', [user_detailtransaksi::class, 'index'])->name('post.detailtransaksi');
+    
+    
     // Melakukan pembayaran
-    Route::post('/user/transactions/{id}/pay', [user_detailtransaksi::class, 'pay'])->name('transactions.pay');
+    // Route::post('/user/transactions/{id}/pay', [user_detailtransaksi::class, 'pay'])->name('transactions.pay');
 
 
 
@@ -71,3 +74,14 @@ Route::get('/user/transactions', [user_detailtransaksi::class, 'index'])->name('
 
 Route::get('/pembayaran', [PaymentController::class, 'processPayment'])->name('pembayaran.show');
 Route::get('/generate-snap-token', [user_detailtransaksi::class, 'store']);
+
+
+
+
+//MIDTRANS BARUUU
+use App\Http\Controllers\UserDetailTransaksi;
+
+// Route::get('/transaction', [UserDetailTransaksi::class, 'index']);
+Route::post('/transaction/pay/{id}', [UserDetailTransaksi::class, 'createPaymentToken'])->name('paymento');
+Route::get('/transaction/pay/{id}', [UserDetailTransaksi::class, 'createPaymentToken'])->name('payment');
+// Route::post('/midtrans/notification', [UserDetailTransaksi::class, 'handleNotification']);
