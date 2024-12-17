@@ -32,6 +32,8 @@ class process_registration extends Controller
 
     public function store(Request $request)
     {
+
+       
         // Validasi input terlebih dahulu
         $request->validate([
             'product_id' => 'required|exists:products,id',
@@ -59,6 +61,8 @@ class process_registration extends Controller
             'status_pembayaran' => 'belum dibayar',
         ]);
 
+        // dd($transactions);
+
         // Generate order_id berdasarkan ID transaksi
         $order_id = $transactions->id;
        
@@ -69,9 +73,9 @@ class process_registration extends Controller
         // dd($transactions->id);  
 
         // Kembalikan respons JSON
-        // return response()->json(['transactionId' => $transaction->id, 'message' => 'Transaksi disimpan.']);
+        return response()->json(['transactionId' => $transactions->id, 'message' => 'Transaksi disimpan.']);
         // return view(user.detailtransaksi)
-        return redirect()->route('user.detailtransaksi')->with('transactions', $transactions);
+        // return redirect()->route('user.detailtransaksi')->with('transactions', $transactions);
     }
 
     public function getSnapToken(Request $request, $id)
@@ -120,6 +124,8 @@ class process_registration extends Controller
             // Simpan snap_token ke dalam tabel
             $transaction->snap_token = $snapToken;
             $transaction->save();
+
+            dd($request->token);
     
             return response()->json([
                 'snap_token' => $snapToken,
