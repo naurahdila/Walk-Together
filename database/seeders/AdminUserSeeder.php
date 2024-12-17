@@ -14,11 +14,15 @@ class AdminUserSeeder extends Seeder
      */
     public function run()
     {
+        // Hapus data lama sebelum seeding
+        DB::table('users')->where('email', 'admin@gmail.com')->delete();
+
+        // Insert admin user
         DB::table('users')->insert([
             'username' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('password123'),
-            'role_id' => 1,  // Asumsikan role_id 1 untuk admin
+            'role_id' => 1
         ]);
     }
 }

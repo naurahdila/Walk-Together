@@ -48,18 +48,18 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html#hero" class="active">Home</a></li>
-          <li><a href="index.html#about">Informasi Program</a></li>
-          <li><a href="index.html#features">Tips & Trik</a></li>
-          <li><a href="index.html#services">Kelas</a></li>
-          <li><a href="index.html">Komunitas</a></li>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">Informasi Program</a></li>
+          <li><a href="#features">Tips & Trik</a></li>
+          <li><a href="#class">Kelas</a></li>
+          <li><a href="#komunitas">Komunitas</a></li>
           {{-- <li class="dropdown"><a href="#"><span>Kelas</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Webinar</a></li>
               <li><a href="#">Mentoring</a></li>
             </ul>
           </li> --}}
-          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -72,9 +72,9 @@
   <main class="main">
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section">
+    <section id="home" class="hero section">
       <div class="hero-bg">
-        <img src="assets/img/hero-bg-light.webp" alt="">
+        <img src="assets/img/hero-bg-light.webp">
       </div>
       <div class="container text-center">
         <div class="d-flex flex-column justify-content-center align-items-center">
@@ -101,8 +101,8 @@
             <div class="service-item d-flex">
               <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
               <div>
-                <h4 class="title"><a href="#" class="stretched-link">Lorem Ipsum</a></h4>
-                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                <h4 class="title"><a class="stretched-link">Melangkah</a></h4>
+                <p class="description">Jangan takut untuk mencoba, karena kesalahan adalah bagian dari proses belajar.</p>
               </div>
             </div>
           </div>
@@ -112,8 +112,8 @@
             <div class="service-item d-flex">
               <div class="icon flex-shrink-0"><i class="bi bi-card-checklist"></i></div>
               <div>
-                <h4 class="title"><a href="#" class="stretched-link">Dolor Sitema</a></h4>
-                <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exa</p>
+                <h4 class="title"><a  class="stretched-link">Kesuksesan</a></h4>
+                <p class="description">Kesuksesan tidak datang dengan mudah. Tetaplah berjuang dan berusaha!</p>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -122,8 +122,8 @@
             <div class="service-item d-flex">
               <div class="icon flex-shrink-0"><i class="bi bi-bar-chart"></i></div>
               <div>
-                <h4 class="title"><a href="#" class="stretched-link">Sed ut perspiciatis</a></h4>
-                <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</p>
+                <h4 class="title"><a class="stretched-link">Mengubah Dunia</a></h4>
+                <p class="description">Pendidikan adalah senjata paling kuat yang bisa kamu gunakan untuk mengubah dunia.</p>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -134,51 +134,91 @@
 
     </section><!-- /Featured Services Section -->
 
-    <!-- About Section -->
-    <section id="about" class="about section">
-
+    <!-- Program Section -->
+    <section id="informasi-program" class="section informasi-program">
       <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
-            <p class="who-we-are">Who We Are</p>
-            <h3>Unleashing Potential with Creative Strategy</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-            </ul>
-            <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-          </div>
-
-          <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
-            <div class="row gy-4">
-              <div class="col-lg-6">
-                <img src="assets/img/about-company-1.jpg" class="img-fluid" alt="">
+        <div class="row text-center">
+    
+          <!-- Box Beasiswa -->
+          <div class="col-md-3 mb-4">
+            <div class="program-box p-4 shadow-sm">
+              <div class="icon mb-3">
+                <img src="assets/icons/scholarship.png" alt="Beasiswa" width="50">
               </div>
-              <div class="col-lg-6">
-                <div class="row gy-4">
-                  <div class="col-lg-12">
-                    <img src="assets/img/about-company-2.jpg" class="img-fluid" alt="">
-                  </div>
-                  <div class="col-lg-12">
-                    <img src="assets/img/about-company-3.jpg" class="img-fluid" alt="">
-                  </div>
-                </div>
+              <h4 class="title">Beasiswa</h4>
+              <p>Informasi tentang program beasiswa terbaru untuk jenjang akademis.</p>
+              <div class="d-flex justify-content-center gap-2">
+                <button class="btn btn-primary btn-bookmark" data-id="beasiswa">
+                  <i class="bi bi-bookmark"></i> Bookmark
+                </button>
+                <button class="btn btn-secondary btn-notifikasi" data-id="beasiswa">
+                  <i class="bi bi-bell"></i> Notifikasi
+                </button>
               </div>
             </div>
-
           </div>
-
+    
+          <!-- Box Magang -->
+          <div class="col-md-3 mb-4">
+            <div class="program-box p-4 shadow-sm">
+              <div class="icon mb-3">
+                <img src="assets/icons/internship.png" alt="Magang" width="50">
+              </div>
+              <h4 class="title">Magang</h4>
+              <p>Peluang magang nasional dan internasional untuk mahasiswa.</p>
+              <div class="d-flex justify-content-center gap-2">
+                <button class="btn btn-primary btn-bookmark" data-id="magang">
+                  <i class="bi bi-bookmark"></i> Bookmark
+                </button>
+                <button class="btn btn-secondary btn-notifikasi" data-id="magang">
+                  <i class="bi bi-bell"></i> Notifikasi
+                </button>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Box IISMA -->
+          <div class="col-md-3 mb-4">
+            <div class="program-box p-4 shadow-sm">
+              <div class="icon mb-3">
+                <img src="assets/icons/iisma.png" alt="IISMA" width="50">
+              </div>
+              <h4 class="title">IISMA</h4>
+              <p>Program pertukaran mahasiswa internasional (IISMA).</p>
+              <div class="d-flex justify-content-center gap-2">
+                <button class="btn btn-primary btn-bookmark" data-id="iisma">
+                  <i class="bi bi-bookmark"></i> Bookmark
+                </button>
+                <button class="btn btn-secondary btn-notifikasi" data-id="iisma">
+                  <i class="bi bi-bell"></i> Notifikasi
+                </button>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Box Akademis -->
+          <div class="col-md-3 mb-4">
+            <div class="program-box p-4 shadow-sm">
+              <div class="icon mb-3">
+                <img src="assets/icons/academic.png" alt="Akademis" width="50">
+              </div>
+              <h4 class="title">Akademis</h4>
+              <p>Informasi akademis penting untuk perkembangan karir.</p>
+              <div class="d-flex justify-content-center gap-2">
+                <button class="btn btn-primary btn-bookmark" data-id="akademis">
+                  <i class="bi bi-bookmark"></i> Bookmark
+                </button>
+                <button class="btn btn-secondary btn-notifikasi" data-id="akademis">
+                  <i class="bi bi-bell"></i> Notifikasi
+                </button>
+              </div>
+            </div>
+          </div>
+    
         </div>
-
       </div>
-    </section><!-- /About Section -->
+    </section>
+    
 
     <!-- Clients Section -->
     <section id="clients" class="clients section">
@@ -352,12 +392,12 @@
     </section><!-- /Features Details Section -->
 
     <!-- Services Section -->
-    <section id="services" class="services section light-background">
+    <section id="class" class="services section light-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Services Walk Together</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>Kelas Walk Together</h2>
+        <p>Kelas dan Mentoring untuk mengasah masa depan</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -496,11 +536,11 @@
     </section><!-- /More Features Section -->
 
     <!-- Pricing Section -->
-    <section id="pricing" class="pricing section">
+    <section id="komunitas" class="pricing section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Pricing</h2>
+        <h2>Komunitas</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
       </div><!-- End Section Title -->
 

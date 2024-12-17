@@ -1,12 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\process_registration;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\user_detailtransaksi;
 use App\Http\Middleware\AuthCheckMiddleware;
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\process_registration;
+use App\Http\Controllers\user_detailtransaksi;
 
 
 Route::get('/', function () {
