@@ -23,31 +23,4 @@ class user_detailtransaksi extends Controller
     }
 
 
-    public function pay(Request $request, $transactionId)
-    {
-        $transaction = Transaction::findOrFail($transactionId);
-    
-        // Data untuk Snap Token
-        $snapData = [
-            'transaction_details' => [
-                'order_id' => $transaction->id,
-                'gross_amount' => $transaction->product_price, // Harga produk
-            ],
-            'customer_details' => [
-                'first_name' => $transaction->name,
-                'email' => $transaction->email,
-            ],
-        ];
-    
-        // Panggil library Midtrans untuk mendapatkan Snap Token
-        \Midtrans\Config::$serverKey = 'YOUR_SERVER_KEY';
-        \Midtrans\Config::$isProduction = false;
-        \Midtrans\Config::$isSanitized = true;
-        \Midtrans\Config::$is3ds = true;
-    
-        $snapToken = \Midtrans\Snap::getSnapToken($snapData);
-    
-        return response()->json(['snapToken' => $snapToken]);
-    }
-    
 }
