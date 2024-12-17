@@ -68,15 +68,8 @@ Route::get('/user/transactions', [user_detailtransaksi::class, 'index'])->name('
 // Melakukan pembayaran
 // Route::post('/user/transactions/{id}/pay', [user_detailtransaksi::class, 'pay'])->name('transactions.pay');
 
-
-
-
-
-Route::get('/pembayaran', [PaymentController::class, 'processPayment'])->name('pembayaran.show');
-Route::get('/generate-snap-token', [user_detailtransaksi::class, 'store']);
-
-
-
+// Route::get('/pembayaran', [PaymentController::class, 'processPayment'])->name('pembayaran.show');
+// Route::get('/generate-snap-token', [user_detailtransaksi::class, 'store']);
 
 //MIDTRANS BARUUU
 use App\Http\Controllers\UserDetailTransaksi;
