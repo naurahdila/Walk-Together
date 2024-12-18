@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -11,10 +12,14 @@ use App\Http\Middleware\AuthCheckMiddleware;
 use App\Http\Controllers\process_registration;
 use App\Http\Controllers\user_detailtransaksi;
 
+=======
+use Illuminate\Support\Facades\Route;
+>>>>>>> d-putra
 
 Route::get('/', function () {
     return view('welcome');
 });
+<<<<<<< HEAD
 
 
 
@@ -87,3 +92,5 @@ use App\Http\Controllers\UserDetailTransaksi;
 Route::post('/transaction/pay/{id}', [UserDetailTransaksi::class, 'createPaymentToken'])->name('paymento');
 Route::get('/transaction/pay/{id}', [UserDetailTransaksi::class, 'createPaymentToken'])->name('payment');
 // Route::post('/midtrans/notification', [UserDetailTransaksi::class, 'handleNotification']);
+=======
+>>>>>>> d-putra
