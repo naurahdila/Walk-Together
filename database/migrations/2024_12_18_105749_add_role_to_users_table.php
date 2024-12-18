@@ -15,7 +15,7 @@ return new class extends Migration
             $table->unsignedBigInteger('role_id')->default(1)->change();  // Default role_id 1
         });
     }
-    
+
     /**
      * Reverse the migrations.
      */

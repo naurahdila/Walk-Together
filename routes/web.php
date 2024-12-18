@@ -12,13 +12,12 @@ use App\Http\Controllers\user_detailtransaksi;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Route;
+
 
 
 Route::get('/', function () {
     return view('welcome');
 });
-
 
 
 
@@ -32,7 +31,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout'); // Pro
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', function () {
-        return view('admin.dashboard');})->name('dashboard'); 
+        return view('admin.dashboard');})->name('dashboard');
     Route::resource('/users', UserController::class);
     Route::resource('/roles', RoleController::class);
 });
@@ -46,13 +45,14 @@ Route::middleware([AuthCheckMiddleware::class ])->group(function () {
     Route::get('/detail_magang', [process_registration::class, 'showmagang'])->name('detail_magang')->defaults('category', 'magang');
     Route::get('/detail_kewirausahaan', [process_registration::class, 'showkewirausahaan'])->name('detail_kewirausahaan')->defaults('category', 'kewirausahaan');
     Route::get('/detail_mapres', [process_registration::class, 'showmapres'])->name('detail_mapres')->defaults('category', 'mapres');
-    
+
     Route::post('/pendaftaraan', [process_registration::class, 'store'])->name('registration.store');
     Route::get('/pendaftaran/success', function() { return "Data Berhasil Disimpan!";})->name('registration.success');
     Route::get('/user/transactions', [user_detailtransaksi::class, 'index'])->name('user.detailtransaksi');
     Route::post('/user/transactions', [user_detailtransaksi::class, 'index'])->name('post.detailtransaksi'); 
   
 });
+
 
 
 
@@ -75,6 +75,7 @@ Route::get('/user/transactions', [user_detailtransaksi::class, 'index'])->name('
 Route::post('/transaction/pay/{id}', [UserDetailTransaksi::class, 'createPaymentToken'])->name('paymento');
 Route::get('/transaction/pay/{id}', [UserDetailTransaksi::class, 'createPaymentToken'])->name('payment');
 
+
 Route::post('/midtrans/webhook/', [UserDetailTransaksi::class, 'handleNotification'])->name('handleNotification');
 
 //transaction invoice
@@ -94,5 +95,6 @@ Route::post('/transaction/update-status/{id}', function ($id, Request $request) 
 
 
 Route::post('/update-status-pembayaran', [UserDetailTransaksi::class, 'updateStatusPembayaran']);
+
 
 
