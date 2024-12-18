@@ -202,7 +202,7 @@
     <section id="features" class="features section">
       <div class="container section-title" data-aos="fade-up">
         <h2>Tips & Trik</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>Simak tips dan trik dibawah ini untuk menjadi sobat wato yang penuh persiapan</p>
       </div>
 
       <div class="container">
@@ -293,7 +293,7 @@
               <div>
                 <h3>Kelas Bimbingan Magang MSIB</h3>
                 <p>Raih peluang magang nasional dan internasional melalui program MSIB!</p>
-                <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
+                <a href="{{ route('detail_magang') }}" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -304,7 +304,7 @@
               <div>
                 <h3>Mentoring Lomba Essay dan KTI</h3>
                 <p>Asah kemampuan menulismu dan raih prestasi di berbagai lomba esai dan karya tulis ilmiah!</p>
-                <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
+                <a href="{{ route('detail_lomba') }}" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -315,7 +315,7 @@
               <div>
                 <h3>Mentoring Mahasiswa Berprestasi</h3>
                 <p>Bersiaplah menjadi mahasiswa berprestasi!</p>
-                <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
+                <a href="{{ route('detail_mapres') }}" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -326,7 +326,7 @@
               <div>
                 <h3>Kelas Freshgraduate Persiapan Karir</h3>
                 <p>Bagi fresh graduate, memulai karier bisa menjadi tantangan.</p>
-                <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
+                <a href="{{ route('detail_freshgraduate') }}" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -337,7 +337,7 @@
               <div>
                 <h3>Kelas Bimbingan Kewirausahaan</h3>
                 <p>Merancang rencana bisnis yang matang, dan strategi untuk memulai bisnis dengan langkah yang tepat dan berkelanjutan.</p>
-                <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
+                <a href="{{ route('detail_kewirausahaan') }}" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
           </div><!-- End Service Item -->

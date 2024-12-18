@@ -71,7 +71,7 @@
       </div>
       <div class="container text-center">
         <div class="d-flex flex-column justify-content-center align-items-center">
-          <h1 data-aos="fade-up">Informasi Lomba <span>Sobat Wato!</span></h1>
+          <h1 data-aos="fade-up">Informasi lomba <span>Sobat Wato!</span></h1>
           <p data-aos="fade-up" data-aos-delay="100">Raih Peluang Akademis dan Karirmu<br></p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
             <a href="#about" class="btn-get-started">Informasi Program</a>
@@ -121,12 +121,12 @@
     </section>
    <!-- Info Section (Scholarship Options) -->
             <section id="info" class="info-section">
-              <h2>Program Lomba Sobat Wato!</h2>
+              <h2>Program lomba Sobat Wato!</h2>
               <div class="container">
                 <div class="card-container">
                   @foreach($products as $product)
                   <div class="card">
-                    <img src="{{ asset('assets/img/gambar_beasiswa.jpg') }}" alt="{{ $product->name_product }}">
+                    <img src="{{ asset('assets/img/gambar_lomba.jpg') }}" alt="{{ $product->name_product }}">
                     <div class="card-content">
                       <h4>{{ $product->name_product }}</h4>
                       <div style="text-align: left; padding: 10px; max-width: 600px; margin: 12px auto;">
@@ -179,10 +179,10 @@
         <div class="popup-content">
           <span class="close" onclick="closePopup()">&times;</span>
           <h3 id="popup-title"></h3>
-          <div style="text-align: left; padding: 10px; max-width: 680px; margin: 12px auto;">
+          <div style="text-align: left; padding: 10px; max-width: 680px; margin: 12px auto; align-items: center;">
             <p style="font-size: 16px; color: #626262; line-height: 1.4; font-weight: 350;">
-              Kelas Lomba adalah program yang dirancang untuk memberikan kesempatan belajar kepada mahasiswa atau individu yang berprestasi, namun membutuhkan dukungan finansial untuk melanjutkan pendidikan mereka. <br><br>
-              Program ini memberikan pelatihan intensif untuk mempersiapkan penerima lomna agar dapat berhasil dalam seleksi dan memanfaatkan kesempatan lomba secara maksimal.
+              Kelas lomba adalah program yang dirancang untuk memberikan kesempatan belajar kepada mahasiswa atau individu yang berprestasi, namun membutuhkan dukungan finansial untuk melanjutkan pendidikan mereka. <br><br>
+              Program ini memberikan pelatihan intensif untuk mempersiapkan penerima lomba agar dapat berhasil dalam seleksi dan memanfaatkan kesempatan lomba secara maksimal.
             </p>
           </div>
           <form action="{{ route('registration.store') }}" method="POST" class="registration-form">
@@ -382,4 +382,4 @@
 
 </body>
 
-
+</html>
