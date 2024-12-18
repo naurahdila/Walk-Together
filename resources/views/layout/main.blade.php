@@ -369,6 +369,109 @@
       </div>
   </section><!-- /Pricing Section -->
 
+<!-- artikel section -->
+
+<section id="articles" class="articles section light-background">
+    <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+            <h2>Artikel Terbaru</h2>
+            <p>Temukan artikel-artikel terbaru yang dapat membantu perjalanan akademik dan karirmu!</p>
+        </div>
+
+        <!-- Single Full-Width Horizontal Card -->
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-12">
+                <div class="card custom-full-card">
+                    <div class="row no-gutters">
+                        <div class="col-lg-7">
+                            <img src="{{ asset('assets/img/gambar_beasiswa.jpg') }}" class="card-img" alt="Artikel 1">
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="card-body">
+                                <h5 class="card-title">Panduan Beasiswa 2024</h5>
+                                <p class="card-text">Dapatkan panduan lengkap mengenai cara mendaftar beasiswa 2024, termasuk tips dan trik untuk mempersiapkan dokumen-dokumen yang dibutuhkan.</p>
+                                <a href="/articles" class="btn btn-primary">Baca Selengkapnya</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Button to view all articles -->
+        <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+            <a href="/articles" class="btn btn-secondary">Lihat Semua Artikel</a>
+        </div>
+    </div>
+</section>
+
+<!-- Optional Custom Styles -->
+<style>
+    .custom-full-card {
+        border-radius: 10px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 30px;
+        width: 100%; /* Full width of the container */
+        height: 400px; 
+    }
+
+    .custom-full-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .custom-full-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #555;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 25px;
+        padding: 10px 20px;
+        transition: background-color 0.3s ease;
+        text-transform: uppercase;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-secondary {
+        background-color: #f8f9fa;
+        color: #007bff;
+        border-radius: 25px;
+        padding: 10px 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+        background-color: #e2e6ea;
+    }
+</style>
+
+
+
+
     <!-- Faq Section -->
     <section id="faq" class="faq section">
       <!-- Section Title -->
@@ -713,6 +816,11 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+   
+
+
+
 
 </body>
 </html>
