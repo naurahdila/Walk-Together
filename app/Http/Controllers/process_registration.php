@@ -58,6 +58,14 @@ class process_registration extends Controller
         return view('magang.detail_magang', compact('products'));
     }
 
+    public function showmapres($category)
+    {
+        // Ambil semua produk dari database
+        $products = DB::table('products')->where('kategori', $category)->get();
+
+        // Kirim data produk ke view
+        return view('mapres.detail_mapres', compact('products'));
+    }
 
     public function store(Request $request)
     {
