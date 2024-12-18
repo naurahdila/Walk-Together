@@ -31,6 +31,15 @@ class process_registration extends Controller
         return view('beasiswa.detail_beasiswa', compact('products'));
     }
 
+    public function showlomba($category)
+    {
+        // Ambil semua produk dari database
+        $products = DB::table('products')->where('kategori', $category)->get();
+
+        // Kirim data produk ke view
+        return view('lomba.detail_lomba', compact('products'));
+    }
+
     public function store(Request $request)
     {
 

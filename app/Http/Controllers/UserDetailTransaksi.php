@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\TransactionHistory;
 use Midtrans\Config;
 use Midtrans\Snap;
+use Midtrans\Notification;
 
 class UserDetailTransaksi extends Controller
 {
@@ -90,22 +91,65 @@ class UserDetailTransaksi extends Controller
     }
 
     public function handleNotification(Request $request)
-    {
-        // Logika untuk menangani notifikasi dari Midtrans
-        $payload = $request->getContent();
-        $notification = json_decode($payload);
+{
+    // Konfigurasi Midtrans
+    Config::$serverKey = 'SB-Mid-server-LsXUHP_sNBfC19yw6CjzcNg0';
+    Config::$isProduction = false;
+    Config::$isSanitized = true;
+    Config::$is3ds = true;
 
+    try {
+        // Ambil data notifikasi dari Midtrans
+        $notification = new Notification();
         $transactionStatus = $notification->transaction_status;
         $orderId = $notification->order_id;
 
-        // Update status pembayaran di database
-        $transactionId = str_replace('TRANSACTION-', '', $orderId);
-        if ($transactionStatus == 'capture' || $transactionStatus == 'settlement') {
-            DB::table('transaction_history')
-                ->where('id', $transactionId)
-                ->update(['status_pembayaran' => 'sudah dibayar']);
+        // Cari transaksi berdasarkan Order ID
+        $transaction = TransactionHistory::where('order_id', $orderId)->first();
+
+        // Jika transaksi tidak ditemukan, kirim respons error
+        if (!$transaction) {
+            Log::warning("Transaksi dengan Order ID {$orderId} tidak ditemukan.");
+            return response()->json(['message' => 'Transaksi tidak ditemukan'], 404);
         }
 
-        return response()->json(['message' => 'Notifikasi diterima']);
+        // Perbarui status transaksi berdasarkan status dari Midtrans
+        DB::beginTransaction();
+
+        if ($transactionStatus == 'settlement') {
+            // Status pembayaran berhasil
+            $transaction->status_pembayaran = 'Sudah Dibayar';
+            Log::info("Transaksi dengan Order ID {$orderId} diselesaikan (settlement).");
+        } elseif ($transactionStatus == 'pending') {
+            // Pembayaran masih menunggu konfirmasi
+            $transaction->status_pembayaran = 'tertunda';
+            Log::info("Transaksi dengan Order ID {$orderId} masih dalam status pending.");
+        } elseif (in_array($transactionStatus, ['deny', 'cancel', 'expire'])) {
+            // Pembayaran dibatalkan atau gagal
+            $transaction->status_pembayaran = 'dibatalkan';
+            Log::info("Transaksi dengan Order ID {$orderId} dibatalkan.");
+        }
+
+        // Simpan perubahan status transaksi
+        $transaction->save();
+
+        // Komit perubahan jika tidak ada kesalahan
+        DB::commit();
+
+        // Kembalikan respons sukses ke Midtrans
+        return response()->json(['message' => 'Notification handled successfully'], 200);
+    } catch (\Exception $e) {
+        // Rollback jika terjadi kesalahan
+        DB::rollBack();
+        Log::error('Error handling Midtrans notification: ' . $e->getMessage());
+        return response()->json(['message' => 'Internal server error'], 500);
     }
+}
+
+
+public function updateStatusPembayaran()
+{
+    DB::table('transaction_history')->update(['status_pembayaran' => 'dibayar']);
+    return response()->json(['message' => 'Semua status pembayaran berhasil diperbarui menjadi "dibayar".']);
+}
 }
