@@ -49,6 +49,15 @@ class process_registration extends Controller
         return view('freshgraduate.detail_freshgraduate', compact('products'));
     }
 
+    public function showmagang($category)
+    {
+        // Ambil semua produk dari database
+        $products = DB::table('products')->where('kategori', $category)->get();
+
+        // Kirim data produk ke view
+        return view('magang.detail_magang', compact('products'));
+    }
+
 
     public function store(Request $request)
     {
