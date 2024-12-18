@@ -10,6 +10,8 @@ use App\Http\Middleware\AuthCheckMiddleware;
 use App\Http\Controllers\process_registration;
 use App\Http\Controllers\user_detailtransaksi;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\articleController;
+use App\Http\Controllers\imageController;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
@@ -47,6 +49,20 @@ Route::middleware([AuthCheckMiddleware::class ])->group(function () {
     Route::get('/pendaftaran/success', function() { return "Data Berhasil Disimpan!";})->name('registration.success');
     Route::get('/user/transactions', [user_detailtransaksi::class, 'index'])->name('user.detailtransaksi');
     Route::post('/user/transactions', [user_detailtransaksi::class, 'index'])->name('post.detailtransaksi'); 
+
+
+    //ini route untuk section article admin
+    Route::get('/admin/articles', [articleController::class, 'index'])->name('admin.articles.index');
+    Route::get('/admin/articles/create', [articleController::class, 'create'])->name('admin.articles.create');
+    Route::post('/admin/articles', [articleController::class, 'store'])->name('admin.articles.store');
+
+    //section article untuk user
+    Route::get('/articles', [articleController::class, 'list'])->name('user.articles.list');
+    Route::get('/articles/{id}', [articleController::class, 'show'])->name('user.articles.show');
+
+    Route::post('/image/upload', [imageController::class, 'upload'])->name('image.upload');
+    Route::post('/articles/{id}/like', [articleController::class, 'likeArticle']);
+
   
 });
 

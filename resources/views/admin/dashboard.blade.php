@@ -99,10 +99,11 @@
             <h3 data-aos="fade-up"><span>Walk Together</span></h3>
             <a href="{{ route('admin.roles.index') }}"><i class="fas fa-user-tag me-2"></i> Manajemen Role</a>
             <a href="{{ route('admin.users.index') }}"><i class="fas fa-users me-2"></i> Manajemen User</a>
+            <a href="{{ route('admin.articles.index')}}"><i class="fas fa-user-tag me-2"></i>Posting Article</a>
             <a href="#"><i class="fas fa-cog me-2"></i> Pengaturan</a>
         </div>
-
         <div class="container">
+            
             @yield('content')
         </div>
         
