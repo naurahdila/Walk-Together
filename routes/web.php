@@ -38,6 +38,11 @@ Route::middleware([AuthCheckMiddleware::class ])->group(function () {
     Route::get('/dashboard', [process_registration::class, 'dashboard'])->name('dashboard');
     Route::get('/detail_beasiswa', [process_registration::class, 'showProduct'])->name('detail_beasiswa')->defaults('category', 'beasiswa');
     Route::get('/detail_lomba', [process_registration::class, 'showlomba'])->name('detail_lomba')->defaults('category', 'lomba');
+    Route::get('/detail_freshgraduate', [process_registration::class, 'showfreshgraduate'])->name('detail_freshgraduate')->defaults('category', 'freshgraduate');
+    Route::get('/detail_magang', [process_registration::class, 'showmagang'])->name('detail_magang')->defaults('category', 'magang');
+    Route::get('/detail_kewirausahaan', [process_registration::class, 'showkewirausahaan'])->name('detail_kewirausahaan')->defaults('category', 'kewirausahaan');
+    Route::get('/detail_mapres', [process_registration::class, 'showmapres'])->name('detail_mapres')->defaults('category', 'mapres');
+    
     Route::post('/pendaftaraan', [process_registration::class, 'store'])->name('registration.store');
     Route::get('/pendaftaran/success', function() { return "Data Berhasil Disimpan!";})->name('registration.success');
     Route::get('/user/transactions', [user_detailtransaksi::class, 'index'])->name('user.detailtransaksi');
