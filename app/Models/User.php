@@ -15,7 +15,6 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-<<<<<<< HEAD
      * @var array<int, string>
      */
     protected $fillable = [
@@ -24,24 +23,11 @@ class User extends Authenticatable
         'password',
     ];
     
-=======
-     * @var list<string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
->>>>>>> d-putra
 
     /**
      * The attributes that should be hidden for serialization.
      *
-<<<<<<< HEAD
-     * @var array<int, string>
-=======
      * @var list<string>
->>>>>>> d-putra
      */
     protected $hidden = [
         'password',
@@ -59,7 +45,6 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-<<<<<<< HEAD
     } 
     // Model User
 public function role()
@@ -67,7 +52,4 @@ public function role()
     return $this->belongsTo(Role::class);
 }
 
-=======
-    }
->>>>>>> d-putra
 }
