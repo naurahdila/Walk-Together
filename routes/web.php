@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+
 use App\Http\Controllers\PaymentController;
 use App\Http\Middleware\AuthCheckMiddleware;
-
 use App\Http\Controllers\process_registration;
 use App\Http\Controllers\user_detailtransaksi;
 
@@ -21,6 +23,13 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.action'); /
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regis'); // Menampilkan form register
 Route::post('/register', [AuthController::class, 'register'])->name('register.action'); // Proses register
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout'); // Proses logout
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');})->name('dashboard'); 
+    Route::resource('/users', UserController::class);
+    Route::resource('/roles', RoleController::class);
+});
 
 
 Route::middleware([AuthCheckMiddleware::class ])->group(function () {

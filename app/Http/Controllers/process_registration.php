@@ -1,12 +1,13 @@
 <?php 
 namespace App\Http\Controllers;
 
-use Midtrans\Config;
 use Midtrans\Snap;
+use Midtrans\Config;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\TransactionHistory;
-use DB;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class process_registration extends Controller

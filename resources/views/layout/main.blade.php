@@ -26,26 +26,15 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: QuickStart
-  * Template URL: https://bootstrapmade.com/quickstart-bootstrap-startup-website-template/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="index-page">
-
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
+      <a class="logo d-flex align-items-center me-auto">
         <img src="assets/img/logo/walktogether.png" alt="">
         <h1 class="sitename">Walk Together</h1>
       </a>
-
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#home" class="active">Home</a></li>
@@ -53,24 +42,28 @@
           <li><a href="#features">Tips & Trik</a></li>
           <li><a href="#class">Kelas</a></li>
           <li><a href="#komunitas">Komunitas</a></li>
-          {{-- <li class="dropdown"><a href="#"><span>Kelas</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Webinar</a></li>
-              <li><a href="#">Mentoring</a></li>
-            </ul>
-          </li> --}}
           <li><a href="#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-
-      <a class="btn-getstarted" href="/login">Daftar/Masuk</a>
+      <a class="btn-getstarted" href="{{ route('login') }}">
+        @guest
+            Daftar/Masuk
+        @endguest
+    
+        @auth
+            Logout
+        @endauth
+    </a>
+    
+      @if(Auth::check() && Auth::user()->role_id === 1)
+      <a class="btn-getstarted" href="{{ route('admin.dashboard') }}">Admin</a>
+      @endif
 
     </div>
   </header>
 
   <main class="main">
-
     <!-- Hero Section -->
     <section id="home" class="hero section">
       <div class="hero-bg">
@@ -87,16 +80,12 @@
           <img src="assets/img/hero-services-img.webp" class="img-fluid hero-img" alt="" data-aos="zoom-out" data-aos-delay="300">
         </div>
       </div>
-
-    </section><!-- /Hero Section -->
+    </section>
 
     <!-- Featured Services Section -->
     <section id="featured-services" class="featured-services section light-background">
-
       <div class="container">
-
         <div class="row gy-4">
-
           <div class="col-xl-4 col-lg-6" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item d-flex">
               <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
@@ -106,7 +95,6 @@
               </div>
             </div>
           </div>
-          <!-- End Service Item -->
 
           <div class="col-xl-4 col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item d-flex">
@@ -116,7 +104,7 @@
                 <p class="description">Kesuksesan tidak datang dengan mudah. Tetaplah berjuang dan berusaha!</p>
               </div>
             </div>
-          </div><!-- End Service Item -->
+          </div>
 
           <div class="col-xl-4 col-lg-6" data-aos="fade-up" data-aos-delay="300">
             <div class="service-item d-flex">
@@ -126,160 +114,110 @@
                 <p class="description">Pendidikan adalah senjata paling kuat yang bisa kamu gunakan untuk mengubah dunia.</p>
               </div>
             </div>
-          </div><!-- End Service Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Featured Services Section -->
-
-    <!-- Program Section -->
-    <section id="informasi-program" class="section informasi-program">
-      <div class="container">
-        <div class="row text-center">
-    
-          <!-- Box Beasiswa -->
-          <div class="col-md-3 mb-4">
-            <div class="program-box p-4 shadow-sm">
-              <div class="icon mb-3">
-                <img src="assets/icons/scholarship.png" alt="Beasiswa" width="50">
-              </div>
-              <h4 class="title">Beasiswa</h4>
-              <p>Informasi tentang program beasiswa terbaru untuk jenjang akademis.</p>
-              <div class="d-flex justify-content-center gap-2">
-                <button class="btn btn-primary btn-bookmark" data-id="beasiswa">
-                  <i class="bi bi-bookmark"></i> Bookmark
-                </button>
-                <button class="btn btn-secondary btn-notifikasi" data-id="beasiswa">
-                  <i class="bi bi-bell"></i> Notifikasi
-                </button>
-              </div>
-            </div>
           </div>
-    
-          <!-- Box Magang -->
-          <div class="col-md-3 mb-4">
-            <div class="program-box p-4 shadow-sm">
-              <div class="icon mb-3">
-                <img src="assets/icons/internship.png" alt="Magang" width="50">
-              </div>
-              <h4 class="title">Magang</h4>
-              <p>Peluang magang nasional dan internasional untuk mahasiswa.</p>
-              <div class="d-flex justify-content-center gap-2">
-                <button class="btn btn-primary btn-bookmark" data-id="magang">
-                  <i class="bi bi-bookmark"></i> Bookmark
-                </button>
-                <button class="btn btn-secondary btn-notifikasi" data-id="magang">
-                  <i class="bi bi-bell"></i> Notifikasi
-                </button>
-              </div>
-            </div>
-          </div>
-    
-          <!-- Box IISMA -->
-          <div class="col-md-3 mb-4">
-            <div class="program-box p-4 shadow-sm">
-              <div class="icon mb-3">
-                <img src="assets/icons/iisma.png" alt="IISMA" width="50">
-              </div>
-              <h4 class="title">IISMA</h4>
-              <p>Program pertukaran mahasiswa internasional (IISMA).</p>
-              <div class="d-flex justify-content-center gap-2">
-                <button class="btn btn-primary btn-bookmark" data-id="iisma">
-                  <i class="bi bi-bookmark"></i> Bookmark
-                </button>
-                <button class="btn btn-secondary btn-notifikasi" data-id="iisma">
-                  <i class="bi bi-bell"></i> Notifikasi
-                </button>
-              </div>
-            </div>
-          </div>
-    
-          <!-- Box Akademis -->
-          <div class="col-md-3 mb-4">
-            <div class="program-box p-4 shadow-sm">
-              <div class="icon mb-3">
-                <img src="assets/icons/academic.png" alt="Akademis" width="50">
-              </div>
-              <h4 class="title">Akademis</h4>
-              <p>Informasi akademis penting untuk perkembangan karir.</p>
-              <div class="d-flex justify-content-center gap-2">
-                <button class="btn btn-primary btn-bookmark" data-id="akademis">
-                  <i class="bi bi-bookmark"></i> Bookmark
-                </button>
-                <button class="btn btn-secondary btn-notifikasi" data-id="akademis">
-                  <i class="bi bi-bell"></i> Notifikasi
-                </button>
-              </div>
-            </div>
-          </div>
-    
         </div>
       </div>
     </section>
-    
 
-    <!-- Clients Section -->
-    <section id="clients" class="clients section">
-
-      <div class="container" data-aos="fade-up">
-
-        <div class="row gy-4">
-
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
+    <!-- Program Section -->
+    <section id="about" class="section informasi-program">
+      <div class="container">
+        <div class="row text-center">
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+          <div style="display: flex; justify-content: space-around; flex-wrap: wrap; background-color: #f8fcff; padding: 40px; gap: 20px;">
+              <!-- Beasiswa -->
+              <div style="background-color: #ffffff; border-radius: 8px; text-align: center; width: 220px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; padding: 20px;">
+                <div style="background-color: #e3f2fd; border-radius: 8px; padding: 10px; margin-bottom: 15px; display: inline-block;">
+                  <span style="font-size: 30px; color: var(--accent-color);"><i class="bi bi-mortarboard"></i></span>
+                </div>
+                <h4 style="color: #333; margin: 10px 0;">Beasiswa</h4>
+                <p style="color: #555; font-size: 0.9rem;">Informasi tentang program beasiswa terbaru.</p>
+                <div style="display: flex; justify-content: center; gap: 10px; margin-top: 15px;">
+                  <button style="background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 8px 12px; border-radius: 25px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">
+                    <i class="bi bi-bookmark-fill" style="margin-right: 5px;"></i> Bookmark
+                  </button>
+                  <button style="background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 8px 12px; border-radius: 25px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">
+                    <i class="bi bi-bell-fill" style="margin-right: 5px;"></i> Notifikasi
+                  </button>
+                </div>
+              </div>
+            
+              <!-- Magang -->
+              <div style="background-color: #ffffff; border-radius: 8px; text-align: center; width: 220px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; padding: 20px;">
+                <div style="background-color: #e3f2fd; border-radius: 8px; padding: 10px; margin-bottom: 15px; display: inline-block;">
+                  <span style="font-size: 30px; color: var(--accent-color);"><i class="bi bi-briefcase-fill"></i></span>
+                </div>
+                <h4 style="color: #333; margin: 10px 0;">Magang</h4>
+                <p style="color: #555; font-size: 0.9rem;">Peluang magang nasional dan internasional.</p>
+                <div style="display: flex; justify-content: center; gap: 10px; margin-top: 15px;">
+                  <button style="background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 8px 12px; border-radius: 25px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">
+                    <i class="bi bi-bookmark-fill" style="margin-right: 5px;"></i> Bookmark
+                  </button>
+                  <button style="background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 8px 12px; border-radius: 25px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">
+                    <i class="bi bi-bell-fill" style="margin-right: 5px;"></i> Notifikasi
+                  </button>
+                </div>
+              </div>
+            
+              <!-- IISMA -->
+              <div style="background-color: #ffffff; border-radius: 8px; text-align: center; width: 220px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; padding: 20px;">
+                <div style="background-color: #e3f2fd; border-radius: 8px; padding: 10px; margin-bottom: 15px; display: inline-block;">
+                  <span style="font-size: 30px; color: var(--accent-color);"><i class="bi bi-globe2"></i></span>
+                </div>
+                <h4 style="color: #333; margin: 10px 0;">IISMA</h4>
+                <p style="color: #555; font-size: 0.9rem;">Program pertukaran mahasiswa internasional.</p>
+                <div style="display: flex; justify-content: center; gap: 10px; margin-top: 15px;">
+                  <button style="background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 8px 12px; border-radius: 25px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">
+                    <i class="bi bi-bookmark-fill" style="margin-right: 5px;"></i> Bookmark
+                  </button>
+                  <button style="background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 8px 12px; border-radius: 25px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">
+                    <i class="bi bi-bell-fill" style="margin-right: 5px;"></i> Notifikasi
+                  </button>
+                </div>
+              </div>
+            
+              <!-- Akademis -->
+              <div style="background-color: #ffffff; border-radius: 8px; text-align: center; width: 220px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; padding: 20px;">
+                <div style="background-color: #e3f2fd; border-radius: 8px; padding: 10px; margin-bottom: 15px; display: inline-block;">
+                  <span style="font-size: 30px; color: var(--accent-color);"><i class="bi bi-book"></i></span>
+                </div>
+                <h4 style="color: #333; margin: 10px 0;">Akademis</h4>
+                <p style="color: #555; font-size: 0.9rem;">Informasi akademis untuk perkembangan karir Anda.</p>
+                <div style="display: flex; justify-content: center; gap: 10px; margin-top: 15px;">
+                  <button style="background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 8px 12px; border-radius: 25px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">
+                    <i class="bi bi-bookmark-fill" style="margin-right: 5px;"></i> Bookmark
+                  </button>
+                  <button style="background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 8px 12px; border-radius: 25px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">
+                    <i class="bi bi-bell-fill" style="margin-right: 5px;"></i> Notifikasi
+                  </button>
+                </div>
+              </div>
+              </div>
+            </div>
         </div>
-
       </div>
-
-    </section><!-- /Clients Section -->
+    </section>
 
     <!-- Features Section -->
     <section id="features" class="features section">
-
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Tips & Trik</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
+      </div>
 
       <div class="container">
         <div class="row justify-content-between">
-
           <div class="col-lg-5 d-flex align-items-center">
-
             <ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
               <li class="nav-item">
                 <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
                   <i class="bi bi-binoculars"></i>
                   <div>
-                    <h4 class="d-none d-lg-block">Modi sit est dela pireda nest</h4>
+                    <h4 class="d-none d-lg-block">Pendaftaran Beasiswa</h4>
                     <p>
-                      Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                      velit esse cillum dolore eu fugiat nulla pariatur
+                      Mulailah dengan mencari informasi beasiswa yang sesuai. 
+                      Pastikan kamu memenuhi syarat administratif seperti transkrip nilai, surat rekomendasi, dan esai motivasi. 
+                      Jangan lupa untuk selalu periksa tenggat waktu agar Anda tidak melewatkan kesempatan emas.
                     </p>
                   </div>
                 </a>
@@ -288,10 +226,10 @@
                 <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
                   <i class="bi bi-box-seam"></i>
                   <div>
-                    <h4 class="d-none d-lg-block">Unde praesenti mara setra le</h4>
+                    <h4 class="d-none d-lg-block">Persiapan Karier</h4>
                     <p>
-                      Recusandae atque nihil. Delectus vitae non similique magnam molestiae sapiente similique
-                      tenetur aut voluptates sed voluptas ipsum voluptas
+                      Persiapan karier dimulai dengan membangun CV dan portofolio yang kuat. Highlight keahlian dan pengalaman yang relevan dengan posisi yang kamu lamar. 
+                      Ingat, konsistensi dan kemauan belajar adalah kunci sukses.
                     </p>
                   </div>
                 </a>
@@ -300,116 +238,50 @@
                 <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
                   <i class="bi bi-brightness-high"></i>
                   <div>
-                    <h4 class="d-none d-lg-block">Pariatur explica nitro dela</h4>
+                    <h4 class="d-none d-lg-block">Pengembangan Diri</h4>
                     <p>
-                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                      Debitis nulla est maxime voluptas dolor aut
+                      Pengembangan diri adalah proses untuk mencapai versi terbaik dari diri Anda. Mulailah dengan mengenali kelebihan dan kekurangan, lalu buat 
+                      target spesifik yang ingin dicapai. Percayalah, setiap langkah kecil 
+                      akan membawa perubahan besar di masa depan.
                     </p>
                   </div>
                 </a>
               </li>
             </ul><!-- End Tab Nav -->
-
           </div>
 
           <div class="col-lg-6">
-
             <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
-
               <div class="tab-pane fade active show" id="features-tab-1">
                 <img src="assets/img/tabs-1.jpg" alt="" class="img-fluid">
               </div><!-- End Tab Content Item -->
-
               <div class="tab-pane fade" id="features-tab-2">
                 <img src="assets/img/tabs-2.jpg" alt="" class="img-fluid">
               </div><!-- End Tab Content Item -->
-
               <div class="tab-pane fade" id="features-tab-3">
                 <img src="assets/img/tabs-3.jpg" alt="" class="img-fluid">
               </div><!-- End Tab Content Item -->
             </div>
-
           </div>
-
         </div>
-
       </div>
-
-    </section><!-- /Features Section -->
-
-    <!-- Features Details Section -->
-    <section id="features-details" class="features-details section">
-
-      <div class="container">
-
-        <div class="row gy-4 justify-content-between features-item">
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/features-1.jpg" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-5 d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
-            <div class="content">
-              <h3>Corporis temporibus maiores provident</h3>
-              <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-              </p>
-              <a href="#" class="btn more-btn">Learn More</a>
-            </div>
-          </div>
-
-        </div><!-- Features Item -->
-
-        <div class="row gy-4 justify-content-between features-item">
-
-          <div class="col-lg-5 d-flex align-items-center order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="content">
-              <h3>Neque ipsum omnis sapiente quod quia dicta</h3>
-              <p>
-                Quidem qui dolore incidunt aut. In assumenda harum id iusto lorena plasico mares
-              </p>
-              <ul>
-                <li><i class="bi bi-easel flex-shrink-0"></i> Et corporis ea eveniet ducimus.</li>
-                <li><i class="bi bi-patch-check flex-shrink-0"></i> Exercitationem dolorem sapiente.</li>
-                <li><i class="bi bi-brightness-high flex-shrink-0"></i> Veniam quia modi magnam.</li>
-              </ul>
-              <p></p>
-              <a href="#" class="btn more-btn">Learn More</a>
-            </div>
-
-          </div>
-
-          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="200">
-            <img src="assets/img/features-2.jpg" class="img-fluid" alt="">
-          </div>
-
-        </div><!-- Features Item -->
-
-      </div>
-
-    </section><!-- /Features Details Section -->
+    </section>
 
     <!-- Services Section -->
     <section id="class" class="services section light-background">
-
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Kelas Walk Together</h2>
         <p>Kelas dan Mentoring untuk mengasah masa depan</p>
       </div><!-- End Section Title -->
-
       <div class="container">
-
         <div class="row g-5">
-
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item item-cyan position-relative">
               <i class="bi bi-activity icon"></i>
               <div>
                 <h3>Kelas Bimbingan Beasiswa</h3>
-                <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
+                <p>Siapkan dirimu untuk meraih beasiswa impian!</p>
                 <a href="{{ route('detail_beasiswa') }}" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
@@ -420,8 +292,8 @@
               <i class="bi bi-broadcast icon"></i>
               <div>
                 <h3>Kelas Bimbingan Magang MSIB</h3>
-                <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
-                <a href=# >Komunitas</a></li>" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
+                <p>Raih peluang magang nasional dan internasional melalui program MSIB!</p>
+                <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -431,7 +303,7 @@
               <i class="bi bi-easel icon"></i>
               <div>
                 <h3>Mentoring Lomba Essay dan KTI</h3>
-                <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
+                <p>Asah kemampuan menulismu dan raih prestasi di berbagai lomba esai dan karya tulis ilmiah!</p>
                 <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
@@ -442,7 +314,7 @@
               <i class="bi bi-bounding-box-circles icon"></i>
               <div>
                 <h3>Mentoring Mahasiswa Berprestasi</h3>
-                <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
+                <p>Bersiaplah menjadi mahasiswa berprestasi!</p>
                 <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
@@ -453,7 +325,7 @@
               <i class="bi bi-calendar4-week icon"></i>
               <div>
                 <h3>Kelas Freshgraduate Persiapan Karir</h3>
-                <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
+                <p>Bagi fresh graduate, memulai karier bisa menjadi tantangan.</p>
                 <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
@@ -464,239 +336,112 @@
               <i class="bi bi-chat-square-text icon"></i>
               <div>
                 <h3>Kelas Bimbingan Kewirausahaan</h3>
-                <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
+                <p>Merancang rencana bisnis yang matang, dan strategi untuk memulai bisnis dengan langkah yang tepat dan berkelanjutan.</p>
                 <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
           </div><!-- End Service Item -->
-
         </div>
-
       </div>
-
     </section><!-- /Services Section -->
-
-    <!-- More Features Section -->
-    <section id="more-features" class="more-features section">
-
-      <div class="container">
-
-        <div class="row justify-content-around gy-4">
-
-          <div class="col-lg-6 d-flex flex-column justify-content-center order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
-            <h3>Enim quis est voluptatibus aliquid consequatur</h3>
-            <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi</p>
-
-            <div class="row">
-
-              <div class="col-lg-6 icon-box d-flex">
-                <i class="bi bi-easel flex-shrink-0"></i>
-                <div>
-                  <h4>Lorem Ipsum</h4>
-                  <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias </p>
-                </div>
-              </div><!-- End Icon Box -->
-
-              <div class="col-lg-6 icon-box d-flex">
-                <i class="bi bi-patch-check flex-shrink-0"></i>
-                <div>
-                  <h4>Nemo Enim</h4>
-                  <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiise</p>
-                </div>
-              </div><!-- End Icon Box -->
-
-              <div class="col-lg-6 icon-box d-flex">
-                <i class="bi bi-brightness-high flex-shrink-0"></i>
-                <div>
-                  <h4>Dine Pad</h4>
-                  <p>Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit</p>
-                </div>
-              </div><!-- End Icon Box -->
-
-              <div class="col-lg-6 icon-box d-flex">
-                <i class="bi bi-brightness-high flex-shrink-0"></i>
-                <div>
-                  <h4>Tride clov</h4>
-                  <p>Est voluptatem labore deleniti quis a delectus et. Saepe dolorem libero sit</p>
-                </div>
-              </div><!-- End Icon Box -->
-
-            </div>
-
-          </div>
-
-          <div class="features-image col-lg-5 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="200">
-            <img src="assets/img/features-3.jpg" alt="">
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- /More Features Section -->
-
+    
     <!-- Pricing Section -->
     <section id="komunitas" class="pricing section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Komunitas</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
-
       <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-            <div class="pricing-item">
-              <h3>Free Plan</h3>
-              <p class="description">Ullam mollitia quasi nobis soluta in voluptatum et sint palora dex strater</p>
-              <h4><sup>$</sup>0<span> / month</span></h4>
-              <a href="#" class="cta-btn">Start a free trial</a>
-              <p class="text-center small">No credit card required</p>
-              <ul>
-                <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-                <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-                <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-                <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
-                <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-                <li class="na"><i class="bi bi-x"></i> <span>Voluptate id voluptas qui sed aperiam rerum</span></li>
-                <li class="na"><i class="bi bi-x"></i> <span>Iure nihil dolores recusandae odit voluptatibus</span></li>
-              </ul>
-            </div>
-          </div><!-- End Pricing Item -->
-
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="pricing-item featured">
-              <p class="popular">Popular</p>
-              <h3>Business Plan</h3>
-              <p class="description">Ullam mollitia quasi nobis soluta in voluptatum et sint palora dex strater</p>
-              <h4><sup>$</sup>29<span> / month</span></h4>
-              <a href="#" class="cta-btn">Start a free trial</a>
-              <p class="text-center small">No credit card required</p>
-              <ul>
-                <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-                <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-                <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-                <li><i class="bi bi-check"></i> <span>Pharetra massa massa ultricies</span></li>
-                <li><i class="bi bi-check"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-                <li><i class="bi bi-check"></i> <span>Voluptate id voluptas qui sed aperiam rerum</span></li>
-                <li class="na"><i class="bi bi-x"></i> <span>Iure nihil dolores recusandae odit voluptatibus</span></li>
-              </ul>
-            </div>
-          </div><!-- End Pricing Item -->
-
-          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="300">
-            <div class="pricing-item">
-              <h3>Developer Plan</h3>
-              <p class="description">Ullam mollitia quasi nobis soluta in voluptatum et sint palora dex strater</p>
-              <h4><sup>$</sup>49<span> / month</span></h4>
-              <a href="#" class="cta-btn">Start a free trial</a>
-              <p class="text-center small">No credit card required</p>
-              <ul>
-                <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-                <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-                <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-                <li><i class="bi bi-check"></i> <span>Pharetra massa massa ultricies</span></li>
-                <li><i class="bi bi-check"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-                <li><i class="bi bi-check"></i> <span>Voluptate id voluptas qui sed aperiam rerum</span></li>
-                <li><i class="bi bi-check"></i> <span>Iure nihil dolores recusandae odit voluptatibus</span></li>
-              </ul>
-            </div>
-          </div><!-- End Pricing Item -->
-
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Komunitas</h2>
         </div>
-
+      <section id="features-details" class="features-details section">
+      <div class="row gy-4 justify-content-between features-item">
+        <div class="col-lg-5 d-flex align-items-center order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
+          <div class="content">
+            <h3>Bergabung dengan Komunitas Sosial !</h3>
+            <p>
+              Ingin berbagi pengalaman, berdiskusi, dan berinteraksi dengan sesama pejuang beasiswa dan pengembangan karier?
+            </p>
+            <p>Nikmati suasana belajar yang suportif, dapatkan update informasi terbaru, dan jalin relasi dengan teman-teman yang memiliki tujuan serupa."</p>
+            <a href="#" class="btn more-btn">Gabung Sekarang</a>
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="200">
+          <img src="assets/img/features-2.jpg" class="img-fluid" alt="">
+        </div>
       </div>
-
-    </section><!-- /Pricing Section -->
+  </section><!-- /Pricing Section -->
 
     <!-- Faq Section -->
     <section id="faq" class="faq section">
-
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Frequently Asked Questions</h2>
+        <h2>Pertanyaan yang Sering Muncul</h2>
       </div><!-- End Section Title -->
-
       <div class="container">
-
         <div class="row justify-content-center">
-
           <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
-
             <div class="faq-container">
-
               <div class="faq-item faq-active">
-                <h3>Non consectetur a erat nam at lectus urna duis?</h3>
+                <h3>Bagaimana cara menemukan program beasiswa yang tepat?</h3>
                 <div class="faq-content">
-                  <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
+                  <p>Anda dapat mencari program beasiswa melalui situs resmi penyedia beasiswa, portal pendidikan, atau bertanya pada komunitas. Pastikan Anda memahami syarat dan kriteria beasiswa serta menyiapkan dokumen penting seperti transkrip nilai, esai motivasi, dan surat rekomendasi.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
               </div><!-- End Faq item-->
 
               <div class="faq-item">
-                <h3>Feugiat scelerisque varius morbi enim nunc faucibus?</h3>
+                <h3>Dokumen apa saja yang harus dipersiapkan untuk mendaftar beasiswa?</h3>
                 <div class="faq-content">
-                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                  <p>Dokumen umum yang perlu dipersiapkan antara lain: Transkrip nilai, Surat rekomendasi, Esai motivasi, Sertifikat prestasi atau kegiatan pendukung, Selalu periksa persyaratan resmi dari penyedia beasiswa.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
               </div><!-- End Faq item-->
 
               <div class="faq-item">
-                <h3>Dolor sit amet consectetur adipiscing elit pellentesque?</h3>
+                <h3>Apa tips sukses dalam melamar pekerjaan pertama?</h3>
                 <div class="faq-content">
-                  <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis</p>
+                  <p>Beberapa tips sukses melamar pekerjaan pertama:
+                    Buat CV yang jelas, singkat, dan relevan, 
+                    Cantumkan pengalaman organisasi, magang, atau proyek,
+                    Latih keterampilan wawancara dengan teman atau mentor,
+                    Pelajari profil perusahaan sebelum melamar,
+                    Tunjukkan semangat belajar dan keterbukaan untuk berkembang.
+                  </p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
               </div><!-- End Faq item-->
 
               <div class="faq-item">
-                <h3>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</h3>
+                <h3>Bagaimana cara mempersiapkan diri menghadapi wawancara beasiswa?</h3>
                 <div class="faq-content">
-                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                  <p>Persiapan wawancara beasiswa meliputi:
+                    Memahami program beasiswa dan penyedia,
+                    Mempelajari esai atau formulir pendaftaran Anda,
+                    Berlatih menjawab pertanyaan umum seperti motivasi dan tujuan,
+                    Berlatih berbicara dengan jelas, percaya diri, dan sopan,
+                    Berpakaian rapi dan profesional saat wawancara.
+                  </p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
               </div><!-- End Faq item-->
 
               <div class="faq-item">
-                <h3>Tempus quam pellentesque nec nam aliquam sem et tortor?</h3>
+                <h3>Apa pentingnya magang dalam persiapan karier?</h3>
                 <div class="faq-content">
-                  <p>Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in</p>
+                  <p>Magang membantu Anda mendapatkan **pengalaman dunia kerja**, memahami cara kerja industri, dan membangun jaringan profesional. Selain itu, magang meningkatkan peluang Anda untuk mendapatkan pekerjaan karena perekrut lebih menyukai kandidat dengan pengalaman kerja.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
               </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3>Perspiciatis quod quo quos nulla quo illum ullam?</h3>
-                <div class="faq-content">
-                  <p>Enim ea facilis quaerat voluptas quidem et dolorem. Quis et consequatur non sed in suscipit sequi. Distinctio ipsam dolore et.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
             </div>
-
           </div><!-- End Faq Column-->
-
         </div>
-
       </div>
-
     </section><!-- /Faq Section -->
 
-    <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials section light-background">
-
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Testimonials</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>Testimoni Program</h2>
       </div><!-- End Section Title -->
-
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="swiper init-swiper">
           <script type="application/json" class="swiper-config">
             {
@@ -724,19 +469,18 @@
             }
           </script>
           <div class="swiper-wrapper">
-
             <div class="swiper-slide">
               <div class="testimonial-item">
                 <div class="stars">
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                  "Setelah mengikuti tips persiapan karier dan membangun portofolio dengan baik, saya akhirnya diterima di perusahaan impian. Kepercayaan diri saya meningkat, dan saya yakin bahwa setiap usaha yang dilakukan dengan sungguh-sungguh akan membuahkan hasil."
                 </p>
                 <div class="profile mt-auto">
                   <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
                   <h3>Saul Goodman</h3>
-                  <h4>Ceo &amp; Founder</h4>
+                  <h4>Manager</h4>
                 </div>
               </div>
             </div><!-- End testimonial item -->
@@ -747,12 +491,12 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                  "Mendapatkan beasiswa ini adalah salah satu pencapaian terbesar dalam hidup saya. Prosesnya memang menantang, tetapi melalui dukungan mentor dan persiapan yang matang, akhirnya saya bisa lolos. Terima kasih kepada pihak yang telah memberikan kesempatan ini!"
                 </p>
                 <div class="profile mt-auto">
                   <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
                   <h3>Sara Wilsson</h3>
-                  <h4>Designer</h4>
+                  <h4>Mahasiswa Unair</h4>
                 </div>
               </div>
             </div><!-- End testimonial item -->
@@ -763,12 +507,12 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                  "Mengikuti program magang benar-benar membuka mata saya tentang dunia kerja. Mulai dari keterampilan teknis hingga bagaimana beradaptasi dengan lingkungan profesional. Magang ini tidak hanya menambah pengalaman, tetapi juga membuka peluang untuk saya bekerja di perusahaan yang sama setelah lulus. Pengalaman berharga yang tidak akan saya lupakan!"
                 </p>
                 <div class="profile mt-auto">
                   <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
                   <h3>Jena Karlis</h3>
-                  <h4>Store Owner</h4>
+                  <h4>Magang Apple Academy</h4>
                 </div>
               </div>
             </div><!-- End testimonial item -->
@@ -779,12 +523,12 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                  "Tidak mudah menemukan program beasiswa yang tepat, tetapi dengan panduan yang diberikan, saya berhasil mendaftar dan diterima! Beasiswa ini memberi saya kesempatan untuk fokus pada studi tanpa terbebani masalah finansial."
                 </p>
                 <div class="profile mt-auto">
                   <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
                   <h3>Matt Brandon</h3>
-                  <h4>Freelancer</h4>
+                  <h4>Mahasiswa IT</h4>
                 </div>
               </div>
             </div><!-- End testimonial item -->
@@ -795,7 +539,7 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                  "Berkat tips dan panduan yang saya dapatkan, saya berhasil membuat CV menarik dan tampil percaya diri saat wawancara. Sekarang, saya bekerja di perusahaan impian saya. Jangan pernah ragu untuk belajar dan mencoba, peluang ada untuk semua orang yang berusaha!"
                 </p>
                 <div class="profile mt-auto">
                   <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
@@ -804,49 +548,41 @@
                 </div>
               </div>
             </div><!-- End testimonial item -->
-
           </div>
           <div class="swiper-pagination"></div>
         </div>
-
       </div>
-
     </section><!-- /Testimonials Section -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
-
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Contact</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
       </div><!-- End Section Title -->
-
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="row gy-4">
-
           <div class="col-lg-6">
             <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
               <i class="bi bi-geo-alt"></i>
-              <h3>Address</h3>
-              <p>A108 Adam Street, New York, NY 535022</p>
+              <h3>Alamat</h3>
+              <p>Jl. Airlangga No.4 - 6, Airlangga, Kec. Gubeng, Surabaya, Jawa Timur 60115</p>
             </div>
           </div><!-- End Info Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
               <i class="bi bi-telephone"></i>
-              <h3>Call Us</h3>
-              <p>+1 5589 55488 55</p>
+              <h3>Telepon</h3>
+              <p>+62 812 3456 7800</p>
             </div>
           </div><!-- End Info Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
               <i class="bi bi-envelope"></i>
-              <h3>Email Us</h3>
-              <p>info@example.com</p>
+              <h3>Email</h3>
+              <p>walktogether@gmail.com</p>
             </div>
           </div><!-- End Info Item -->
 
@@ -854,7 +590,15 @@
 
         <div class="row gy-4 mt-1">
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" style="border:0; width: 100%; height: 400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.149421457475!2d110.37842651516983!3d-7.555774494545179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a140f9c2c97a1%3A0x63e4b8e34ed8f77e!2sUniversitas%20Sebelas%20Maret!5e0!3m2!1sid!2sid!4v1714030202342!5m2!1sid!2sid" 
+            frameborder="0" 
+            style="border:0; width: 100%; height: 400px;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          
+
           </div><!-- End Google Maps -->
 
           <div class="col-lg-6">
@@ -884,32 +628,26 @@
 
                   <button type="submit">Send Message</button>
                 </div>
-
               </div>
             </form>
           </div><!-- End Contact Form -->
-
         </div>
-
       </div>
-
     </section><!-- /Contact Section -->
-
   </main>
 
   <footer id="footer" class="footer position-relative light-background">
-
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
+          <a  class="logo d-flex align-items-center">
             <span class="sitename">Walk Together</span>
           </a>
           <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
+            <p>Walk Together</p>
+            <p>Surabaya, Jawa Timur</p>
+            <p class="mt-3"><strong>Phone:</strong> <span>+62 812 3456 7800</span></p>
+            <p><strong>Email:</strong> <span>walktogether@gmail.com</span></p>
           </div>
           <div class="social-links d-flex mt-4">
             <a href=""><i class="bi bi-twitter-x"></i></a>
@@ -918,7 +656,6 @@
             <a href=""><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
-
         <div class="col-lg-2 col-md-3 footer-links">
           <h4>Useful Links</h4>
           <ul>
@@ -929,7 +666,6 @@
             <li><a href="#">Privacy policy</a></li>
           </ul>
         </div>
-
         <div class="col-lg-2 col-md-3 footer-links">
           <h4>Our Services</h4>
           <ul>
@@ -940,7 +676,6 @@
             <li><a href="#">Graphic Design</a></li>
           </ul>
         </div>
-
         <div class="col-lg-4 col-md-12 footer-newsletter">
           <h4>Our Newsletter</h4>
           <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
@@ -951,17 +686,12 @@
             <div class="sent-message">Your subscription request has been sent. Thank you!</div>
           </form>
         </div>
-
       </div>
     </div>
 
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> <strong class="px-1 sitename">Walk Together</strong><span>All Rights Reserved</span></p>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
@@ -985,5 +715,4 @@
   <script src="assets/js/main.js"></script>
 
 </body>
-
 </html>
