@@ -17,12 +17,11 @@ class TransactionHistory extends Model
     ];
 
     // Tentukan kolom yang tidak bisa diisi
-    protected $guarded = ['id'];
+    // protected $guarded = ['id'];
 
-     // Tentukan default value untuk status_pembayaran
-     protected $attributes = [
-        'status_pembayaran' => 'belum dibayar', // Menetapkan nilai default
-    ];
+    //  // Tentukan default value untuk status_pembayaran
+    // //   // Menetapkan nilai default
+    // ];
 
     // Pastikan timestamps diatur dengan benar
     public $timestamps = true;

@@ -98,7 +98,8 @@
                   @if($transaction->status_pembayaran === "belum dibayar")
                     <button type="button" class="btn btn-primary pay-button" data-transaction-id="{{ $transaction->id }}">Bayar</button>
                   @else
-                    <button class="btn btn-success" disabled>Sudah Dibayar</button>
+                  <button class="btn btn-success" disabled>Sudah Dibayar</button>
+                  <a href="/transaction/invoice/{{ $transaction->id }}" class="btn btn-secondary">Cetak Invoice</a>
                   @endif
                 </td>
               </tr>
@@ -107,6 +108,30 @@
         </table>
       @endif
     </section>
+
+
+    
+
+
+    <h3>Transaksi Sudah Dibayar</h3>
+    <table class="table table-bordered" id="paid-transactions">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Jenis Transaksi</th>
+          <th>Nama Produk</th>
+          <th>Harga Produk</th>
+          <th>Nama</th>
+          <th>Tanggal</th>
+          <th>Status Pembayaran</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Baris transaksi yang sudah dibayar akan muncul di sini setelah pembayaran berhasil -->
+      </tbody>
+    </table>
+  </section>
 
   </main>
 
@@ -133,47 +158,175 @@
   <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
   <script src="{{ asset('assets/js/main.js') }}"></script>
 
-  <script>
-    document.querySelectorAll('.pay-button').forEach(button => {
-      button.addEventListener('click', function () {
-        const transactionId = this.getAttribute('data-transaction-id');
 
-        fetch(`/transaction/pay/${transactionId}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+{{-- <script>
+  document.querySelectorAll('.pay-button').forEach(button => {
+    button.addEventListener('click', function () {
+      const transactionId = this.getAttribute('data-transaction-id');
+
+      fetch(`/transaction/pay/${transactionId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.snapToken) {
+            snap.pay(data.snapToken, {
+              onSuccess: result => {
+                alert('Pembayaran berhasil!');
+                
+                // Kirim permintaan untuk memperbarui status pembayaran
+                fetch(`/midtrans/webhook?transactionId=${transactionId}`, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                  },
+                  body: JSON.stringify({ status_pembayaran: 'dibayar' })
+                })
+                .then(updateResponse => updateResponse.json())
+                .then(updateData => {
+                  if (updateData.success) {
+                    // Ubah tombol setelah pembayaran berhasil
+                    const parentElement = button.parentElement;
+                    button.remove();
+                    
+                    // Tambahkan tombol cetak invoice
+                    const printButton = document.createElement('button');
+                    printButton.textContent = 'Cetak Invoice';
+                    printButton.classList.add('btn', 'btn-success');
+                    printButton.addEventListener('click', () => {
+                      window.open(`/transaction/invoice/${transactionId}`, '_blank');
+                    });
+                    parentElement.appendChild(printButton);
+                    
+                    // Tambahkan tanda "Sudah Dibayar"
+                    const statusSpan = document.createElement('span');
+                    statusSpan.textContent = 'Sudah Dibayar';
+                    statusSpan.classList.add('text-success', 'ml-2');
+                    parentElement.appendChild(statusSpan);
+                  } else {
+                    alert('Gagal memperbarui status pembayaran.');
+                  }
+                })
+                .catch(updateError => {
+                  console.error('Error:', updateError);
+                  alert('Terjadi kesalahan saat memperbarui status pembayaran.');
+                });
+
+                location.reload();
+              },
+              onPending: result => {
+                alert('Pembayaran tertunda!');
+              },
+              onError: result => {
+                alert('Pembayaran gagal!');
+              },
+              onClose: () => {
+                alert('Transaksi dibatalkan.');
+              }
+            });
+          } else {
+            alert('Snap Token tidak ditemukan.');
           }
         })
-          .then(response => response.json())
-          .then(data => {
-            if (data.snapToken) {
-              snap.pay(data.snapToken, {
-                onSuccess: result => {
-                  alert('Pembayaran berhasil!');
-                  location.reload();
-                },
-                onPending: result => {
-                  alert('Pembayaran tertunda!');
-                },
-                onError: result => {
-                  alert('Pembayaran gagal!');
-                },
-                onClose: () => {
-                  alert('Transaksi dibatalkan.');
-                }
-              });
-            } else {
-              alert('Snap Token tidak ditemukan.');
-            }
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            alert('Terjadi kesalahan.');
-          });
-      });
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Terjadi kesalahan.');
+        }); 
     });
-  </script>
+  });
+</script>  --}}
+ 
+
+<script>
+  document.querySelectorAll('.pay-button').forEach(button => {
+    button.addEventListener('click', function () {
+      const transactionId = this.getAttribute('data-transaction-id');
+
+      fetch(`/transaction/pay/${transactionId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.snapToken) {
+            snap.pay(data.snapToken, {
+              onSuccess: result => {
+                alert('Pembayaran berhasil!');
+                
+                // Kirim permintaan untuk memperbarui status pembayaran
+                fetch(`/update-status-pembayaran?transactionId=${transactionId}`, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                  },
+                  body: JSON.stringify({ status_pembayaran: 'dibayar' })
+                })
+                .then(updateResponse => updateResponse.json())
+                .then(updateData => {
+                  if (updateData.success) {
+                    const parentElement = button.parentElement;
+                    button.remove();  // Menghapus tombol "Pay"
+                    
+                    // Tambahkan tombol cetak invoice
+                    const printButton = document.createElement('button');
+                    printButton.textContent = 'Cetak Invoice';
+                    printButton.classList.add('btn', 'btn-success');
+                    printButton.addEventListener('click', () => {
+                      window.open(`/transaction/invoice/${transactionId}`, '_blank');
+                    });
+                    parentElement.appendChild(printButton);
+                    
+                    // Tambahkan tanda "Sudah Dibayar"
+                    const statusSpan = document.createElement('span');
+                    statusSpan.textContent = 'Sudah Dibayar';
+                    statusSpan.classList.add('text-success', 'ml-2');
+                    parentElement.appendChild(statusSpan);
+                  } else {
+                    alert('Gagal memperbarui status pembayaran.');
+                  }
+                })
+                .catch(updateError => {
+                  console.error('Error:', updateError);
+                  alert('Terjadi kesalahan saat memperbarui status pembayaran.');
+                });
+
+                location.reload();  // Reload halaman setelah pembayaran berhasil
+              },
+              onPending: result => {
+                alert('Pembayaran tertunda!');
+              },
+              onError: result => {
+                alert('Pembayaran gagal!');
+              },
+              onClose: () => {
+                alert('Transaksi dibatalkan.');
+              }
+            });
+          } else {
+            alert('Snap Token tidak ditemukan.');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Terjadi kesalahan.');
+        });
+    });
+  });
+</script>
+
+
+
+
+
 
 </body>
 
