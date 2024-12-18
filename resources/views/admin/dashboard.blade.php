@@ -9,103 +9,166 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <!-- Custom CSS -->
     <style>
         body {
-            font-family: 'Nunito', sans-serif;
-            background-color: #f8fcff;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f9ff;
             color: #333;
         }
-        .header {
-            background-color: #ffffff;
-            padding: 10px 20px;
-            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+        .navbar {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            color: #fff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .navbar-nav .nav-link {
+            color: #fff;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #d4e9ff;
         }
         .sidebar {
             height: 100vh;
-            background-color: #e3f2fd;
+            background: linear-gradient(180deg, #4facfe, #00f2fe);
             padding: 20px;
+            position: fixed;
+            width: 260px;
+            overflow-y: auto;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar h4 {
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
         }
         .sidebar a {
-            display: block;
-            color: #333;
-            padding: 10px 15px;
-            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            padding: 12px 20px;
+            margin-bottom: 12px;
             text-decoration: none;
-            border-radius: 5px;
-            transition: 0.3s ease;
+            border-radius: 12px;
+            transition: background 0.3s ease, transform 0.2s ease;
+            font-weight: 500;
+        }
+        .sidebar a i {
+            margin-right: 10px;
+            font-size: 1.3rem;
+            color: #d4e9ff;
         }
         .sidebar a.active,
         .sidebar a:hover {
-            background-color: var(--accent-color);
+            background: #0056b3;
             color: #fff;
+            transform: translateX(8px);
         }
         .content {
-            padding: 30px;
+            margin-left: 280px;
+            padding: 40px;
+            min-height: 100vh;
+            background-color: #f4f9ff;
+            box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.05);
         }
         .card {
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             background-color: #ffffff;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card:hover {
-            transform: scale(1.03);
-        }
-        .card-icon {
-            font-size: 2.5rem;
-            color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
         }
         .btn-logout {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .btn-logout a {
+            background: linear-gradient(90deg, #ff6b6b, #ff4c4c);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .btn-logout a:hover {
+            background: linear-gradient(90deg, #ff4c4c, #ff2e2e);
+            transform: scale(1.1);
+        }
+        .footer {
+            text-align: center;
             margin-top: 20px;
-            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+            color: #777;
         }
-
-        .btn-home {
-            display: inline-block;
-            background-color: #3b8dbf; /* Warna biru seperti contoh */
-            color: #ffffff; /* Warna teks putih */
-            border: none;
-            border-radius: 50px; /* Membuat bentuk oval */
-            padding: 8px 20px; /* Padding atas/bawah dan kiri/kanan */
-            text-decoration: none; /* Menghilangkan garis bawah */
-            font-weight: 600; /* Teks bold */
-            font-size: 14px; /* Ukuran font */
-            text-align: center;
-            transition: background-color 0.3s ease, transform 0.2s ease; /* Animasi efek */
-        }
-
-        .btn-home:hover {
-            background-color: #2c7ea2; /* Warna biru yang lebih gelap saat hover */
-            transform: scale(1.05); /* Efek zoom saat di-hover */
-            color: #ffffff; /* Warna teks tetap putih */
-        }
-
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <div class="header d-flex justify-content-between align-items-center">
-        <h3 data-aos="fade-up">Dashboard Admin</h3>
-        <a class="btn-home" href="/dashboard#home" >home</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Admin Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4>Walk Together</h4>
+        <a href="{{ route('admin.roles.index') }}" class="active"><i class="fas fa-user-tag"></i> Manajemen Role</a>
+        <a href="{{ route('admin.users.index') }}"><i class="fas fa-users"></i> Manajemen User</a>
+        <a href="{{ route('admin.articles.index') }}"><i class="fas fa-newspaper"></i> Posting Artikel</a>
+        <a href="{{ route('admin.transaction_history.index') }}"><i class="fas fa-history"></i> Riwayat Transaksi</a>
+        <a href="#"><i class="fas fa-cog"></i> Pengaturan</a>
+        <div class="btn-logout">
+            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
     </div>
 
-    <!-- Layout -->
-    <div class="d-flex">
-        <!-- Sidebar -->
-        <div class="sidebar" >
-            <h3 data-aos="fade-up"><span>Walk Together</span></h3>
-            <a href="{{ route('admin.roles.index') }}"><i class="fas fa-user-tag me-2"></i> Manajemen Role</a>
-            <a href="{{ route('admin.users.index') }}"><i class="fas fa-users me-2"></i> Manajemen User</a>
-            <a href="#"><i class="fas fa-cog me-2"></i> Pengaturan</a>
-        </div>
+    <!-- Content -->
+    <div class="content">
+        @yield('content')
+    </div>
 
-        <div class="container">
-            @yield('content')
-        </div>
-        
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2024 Walk Together - All Rights Reserved.
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
