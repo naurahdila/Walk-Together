@@ -12,9 +12,13 @@ use App\Http\Controllers\user_detailtransaksi;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Route;
+
+
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 
 
@@ -70,6 +74,7 @@ Route::get('/user/transactions', [user_detailtransaksi::class, 'index'])->name('
 //MIDTRANS BARUUU
 Route::post('/transaction/pay/{id}', [UserDetailTransaksi::class, 'createPaymentToken'])->name('paymento');
 Route::get('/transaction/pay/{id}', [UserDetailTransaksi::class, 'createPaymentToken'])->name('payment');
+
 Route::post('/midtrans/webhook/', [UserDetailTransaksi::class, 'handleNotification'])->name('handleNotification');
 
 //transaction invoice
@@ -89,3 +94,5 @@ Route::post('/transaction/update-status/{id}', function ($id, Request $request) 
 
 
 Route::post('/update-status-pembayaran', [UserDetailTransaksi::class, 'updateStatusPembayaran']);
+
+
