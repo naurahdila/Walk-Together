@@ -24,12 +24,12 @@ class RoleController extends Controller
     {
         // Validasi input
         $request->validate([
-            'username' => 'required|string|max:255|unique:roles',
+            'name' => 'required|string|max:255|unique:roles',
         ]);
 
         // Insert data role ke tabel 'roles'
         DB::table('roles')->insert([
-            'username' => $request->input('username'),
+            'name' => $request->input('name'),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -55,11 +55,11 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'username' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
         ]);
 
         $affected = DB::table('roles')->where('id', $id)->update([
-            'username' => $request->input('username'),
+            'name' => $request->input('name'),
             'updated_at' => now(),
         ]);
 

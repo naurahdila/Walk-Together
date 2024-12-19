@@ -12,7 +12,7 @@ class UserController extends Controller
     {
         $users = DB::table('users')
             ->join('roles', 'users.role_id', '=', 'roles.id')
-            ->select('users.*', 'roles.username as role_name')
+            ->select('users.*', 'roles.name as role_name')
             ->get();
 
         return view('admin.users.index', compact('users'));
@@ -32,7 +32,7 @@ class UserController extends Controller
     {
         // Validasi input
         $validated = $request->validate([
-            'username' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8',  // Menambahkan validasi password
             'role_id' => 'required|exists:roles,id',
@@ -42,7 +42,7 @@ class UserController extends Controller
         $hashedPassword = Hash::make($validated['password']);
 
         DB::table('users')->insert([
-            'username' => $validated['username'],
+            'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => $hashedPassword,  // Menyimpan password yang sudah di-hash
             'role_id' => $validated['role_id'],
@@ -72,7 +72,7 @@ class UserController extends Controller
     {
         // Validasi input
         $validated = $request->validate([
-            'username' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $id,
             'role_id' => 'required|exists:roles,id',
             'password' => 'nullable|string|min:8',  // Password opsional untuk update
@@ -80,7 +80,7 @@ class UserController extends Controller
 
         // Jika password diisi, lakukan hashing
         $dataToUpdate = [
-            'username' => $validated['username'],
+            'name' => $validated['name'],
             'email' => $validated['email'],
             'role_id' => $validated['role_id'],
             'updated_at' => now(),

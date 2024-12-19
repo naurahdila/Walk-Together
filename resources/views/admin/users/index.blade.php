@@ -21,11 +21,11 @@
     <div class="card shadow-sm">
         <div class="card-body">
             <a href="{{ route('admin.users.create') }}" class="btn btn-primary mb-3">Add User</a>
-            <table class="table table-bordered table-hover">
+            <table id="usersTable" class="table table-bordered table-hover">
                 <thead class="table-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Username</th>
+                        <th>Name</th>
                         <th>Email</th>
                         <th>Role</th>
                         <th>Actions</th>
@@ -35,9 +35,9 @@
                     @foreach($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
-                        <td>{{ $user->username }}</td>
+                        <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->role_id }}</td>
+                        <td>{{ $user->role->name ?? 'N/A' }}</td> <!-- Display the role name -->
                         <td>
                             <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
                             <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" style="display:inline;">
@@ -53,4 +53,16 @@
         </div>
     </div>
 </div>
+
+<!-- DataTables Initialization Script -->
+<script>
+    $(document).ready(function() {
+        $('#usersTable').DataTable({
+            "paging": true,
+            "searching": true,
+            "info": true,
+            "autoWidth": false
+        });
+    });
+</script>
 @endsection

@@ -185,7 +185,7 @@
               Program ini memberikan pelatihan intensif untuk mempersiapkan penerima magang agar dapat berhasil dalam seleksi dan memanfaatkan kesempatan magang secara maksimal.
             </p>
           </div>
-          <form action="{{ route('registration.store') }}" method="POST" class="registration-form">
+          <form action="{{ route('user.detailtransaksi') }}" method="POST" class="registration-form">
             @csrf
             <label for="name">Nama:</label>
             <input type="text" id="name" name="name" required>

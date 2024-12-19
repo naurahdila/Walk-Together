@@ -34,7 +34,7 @@
     </div>
 
     <!-- Tabel Transaksi -->
-    <table class="table table-bordered mt-4">
+    <table id="transactionHistoryTable" class="table table-bordered mt-4">
         <thead class="table-light">
             <tr>
                 <th>No</th>
@@ -80,4 +80,17 @@
         <a href="{{ route('admin.transaction_history.print', ['user_id' => request('user_id'), 'start_date' => request('start_date'), 'end_date' => request('end_date')]) }}" class="btn btn-danger">Cetak PDF Seluruh Transaksi</a>
     </div>
 </div>
+
+<!-- DataTables Initialization Script -->
+<script>
+    $(document).ready(function() {
+        $('#transactionHistoryTable').DataTable({
+            "paging": true,
+            "searching": true,
+            "info": true,
+            "autoWidth": false
+        });
+    });
+</script>
+
 @endsection

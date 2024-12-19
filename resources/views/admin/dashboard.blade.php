@@ -12,6 +12,16 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+        <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+
     <!-- Custom CSS -->
     <style>
         body {
@@ -130,7 +140,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="/dashboard#home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Profile</a>
@@ -139,7 +149,7 @@
                         <a class="nav-link" href="#">Settings</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="/login">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -149,13 +159,13 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <h4>Walk Together</h4>
-        <a href="{{ route('admin.roles.index') }}" class="active"><i class="fas fa-user-tag"></i> Manajemen Role</a>
-        <a href="{{ route('admin.users.index') }}"><i class="fas fa-users"></i> Manajemen User</a>
+        <a href="{{ route('admin.roles.index') }}"><i class="fas fa-user-tag"></i> Manajemen Role</a>
+        <a href="{{ route('admin.users.index') }}" ><i class="fas fa-users"></i> Manajemen User</a>
         <a href="{{ route('admin.articles.index') }}"><i class="fas fa-newspaper"></i> Posting Artikel</a>
         <a href="{{ route('admin.transaction_history.index') }}"><i class="fas fa-history"></i> Riwayat Transaksi</a>
         <a href="#"><i class="fas fa-cog"></i> Pengaturan</a>
         <div class="btn-logout">
-            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="/login"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </div>
     </div>
 

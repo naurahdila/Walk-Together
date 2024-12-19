@@ -7,8 +7,8 @@
         @csrf
         @method('PUT')
         <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" name="username" id="username" value="{{ $user->username }}" class="form-control" required>
+            <label for="name" class="form-label">Username</label>
+            <input type="text" name="name" id="name" value="{{ $user->name }}" class="form-control" required>
         </div>
 
         <div class="mb-3">
@@ -21,7 +21,7 @@
             <select name="role_id" id="role_id" class="form-select" required>
                 @foreach($roles as $role)
                     <option value="{{ $role->id }}" {{ $role->id == $user->role_id ? 'selected' : '' }}>
-                        {{ $role->username }}
+                        {{ $role->name }}
                     </option>
                 @endforeach
             </select>

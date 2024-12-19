@@ -12,5 +12,5 @@ class Role extends Model
     protected $table = 'roles'; 
 
     // Tentukan kolom yang dapat diisi
-    protected $fillable = ['username'];
+    protected $fillable = ['name'];
 }

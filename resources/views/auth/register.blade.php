@@ -33,8 +33,8 @@
               <form action="{{ route('register.action') }}" method="POST" class="pt-3">
                 @csrf
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Username" name="username">
-                    @error('username')
+                    <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="name" name="name">
+                    @error('name')
                     <span class="text-red-600">{{ $message }}</span>
                     @enderror
                 </div>

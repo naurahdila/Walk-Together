@@ -25,8 +25,8 @@
                 @method('PUT')
                 
                 <div class="mb-3">
-                    <label for="username" class="form-label">Role Name</label>
-                    <input type="text" class="form-control" id="username" name="username" value="{{ old('username', $role->username) }}" required>
+                    <label for="name" class="form-label">Role Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $role->name) }}" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Update Role</button>

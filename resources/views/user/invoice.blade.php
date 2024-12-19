@@ -9,64 +9,80 @@
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #f8f9fa;
+      background-color: #f4f6f9;
       margin: 0;
       padding: 0;
     }
 
     .container {
-      background-color: #ffffff;
-      border-radius: 8px;
+      background-color: #fff;
+      border-radius: 10px;
       padding: 30px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin-top: 50px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      margin: 40px auto;
+      max-width: 900px;
     }
 
-    h1 {
+    .header {
       text-align: center;
-      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
       color: #333;
-      margin-bottom: 30px;
     }
 
-    table {
-      width: 100%;
-      margin-bottom: 30px;
-      border-collapse: collapse;
+    .header p {
+      font-size: 1rem;
+      color: #666;
     }
 
-    th {
-      background-color: #007bff;
-      color: white;
-      padding: 12px 15px;
+    .table-custom th,
+    .table-custom td {
+      padding: 15px;
       text-align: left;
+    }
+
+    .table-custom th {
+      background-color: #007bff;
+      color: #fff;
       font-size: 16px;
     }
 
-    td {
-      padding: 12px 15px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
+    .table-custom td {
+      border-bottom: 1px solid #eaeaea;
       font-size: 15px;
     }
 
-    .btn {
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 5px;
-      text-decoration: none;
-      display: inline-block;
+    .table-custom .highlight {
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .footer {
+      text-align: center;
       margin-top: 20px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .btn-group {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 10px 25px;
+      border-radius: 5px;
+      font-size: 16px;
     }
 
     .btn-primary {
       background-color: #007bff;
-      color: white;
       border: none;
-      cursor: pointer;
+      color: white;
     }
 
     .btn-primary:hover {
@@ -75,9 +91,8 @@
 
     .btn-secondary {
       background-color: #6c757d;
-      color: white;
       border: none;
-      cursor: pointer;
+      color: white;
       margin-left: 10px;
     }
 
@@ -85,21 +100,38 @@
       background-color: #5a6268;
     }
 
-    .footer {
-      text-align: center;
-      margin-top: 40px;
-      color: #777;
+    .badge {
+      padding: 10px 15px;
       font-size: 14px;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    .badge-success {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .badge-warning {
+      background-color: #ffc107;
+      color: black;
+    }
+
+    .badge-danger {
+      background-color: #dc3545;
+      color: white;
     }
   </style>
 </head>
 
 <body>
-
   <div class="container">
-    <h1>Invoice</h1>
+    <div class="header">
+      <h1>Invoice</h1>
+      <p>Transaction Details</p>
+    </div>
 
-    <table>
+    <table class="table table-custom">
       <tr>
         <th>ID Transaksi</th>
         <td>{{ $transactions->id }}</td>
@@ -110,11 +142,11 @@
       </tr>
       <tr>
         <th>Nama Produk</th>
-        <td>{{ $transactions->product_name }}</td>
+        <td class="highlight">{{ $transactions->product_name }}</td>
       </tr>
       <tr>
         <th>Harga Produk</th>
-        <td>{{ $transactions->product_price }}</td>
+        <td>Rp {{ number_format($transactions->product_price, 0, ',', '.') }}</td>
       </tr>
       <tr>
         <th>Nama</th>
@@ -122,24 +154,31 @@
       </tr>
       <tr>
         <th>Tanggal</th>
-        <td>{{ $transactions->created_at }}</td>
+        <td>{{ $transactions->created_at->format('d M Y, H:i') }}</td>
       </tr>
       <tr>
         <th>Status Pembayaran</th>
-        <td>{{ $transactions->status_pembayaran }}</td>
+        <td>
+          <span class="badge 
+            @if($transactions->status_pembayaran == 'dibayar') badge-success
+            @elseif($transactions->status_pembayaran == 'Pending') badge-warning
+            @elseif($transactions->status_pembayaran == 'Gagal') badge-danger
+            @endif">
+            {{ ucfirst($transactions->status_pembayaran) }}
+          </span>
+        </td>
       </tr>
     </table>
 
-    <div class="d-flex justify-content-between">
-      <button class="btn btn-primary" onclick="window.print()">Cetak Invoice</button>
-      <a href="/" class="btn btn-secondary">Kembali</a>
+    <div class="btn-group">
+      <a href="{{ route('admin.transaction_history.index') }}" class="btn btn-primary">Back</a>
+      <a href="{{ route('admin.transaction_history.print', $transactions->id) }}" class="btn btn-secondary">Print</a>
+    </div>
+
+    <div class="footer">
+      <p>&copy; {{ date('Y') }} Your Company. All rights reserved.</p>
     </div>
   </div>
-
-  <div class="footer">
-    <p>Terima kasih telah berbelanja bersama kami!</p>
-  </div>
-
 </body>
 
 </html>

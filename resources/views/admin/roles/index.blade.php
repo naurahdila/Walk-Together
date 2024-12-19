@@ -21,7 +21,7 @@
     <div class="card shadow-sm">
         <div class="card-body">
             <a href="{{ route('admin.roles.create') }}" class="btn btn-primary mb-3">Add Role</a>
-            <table class="table table-bordered table-hover">
+            <table id="rolesTable" class="table table-bordered table-hover">
                 <thead class="table-dark">
                     <tr>
                         <th>ID</th>
@@ -33,7 +33,7 @@
                     @foreach($roles as $role)
                     <tr>
                         <td>{{ $role->id }}</td>
-                        <td>{{ $role->username }}</td>
+                        <td>{{ $role->name }}</td>
                         <td>
                             <a href="{{ route('admin.roles.edit', $role->id) }}" class="btn btn-warning btn-sm">Edit</a>
                             <form action="{{ route('admin.roles.destroy', $role->id) }}" method="POST" style="display:inline;">
@@ -49,4 +49,16 @@
         </div>
     </div>
 </div>
+
+<!-- DataTables Initialization Script -->
+<script>
+    $(document).ready(function() {
+        $('#rolesTable').DataTable({
+            "paging": true,
+            "searching": true,
+            "info": true,
+            "autoWidth": false
+        });
+    });
+</script>
 @endsection

@@ -43,7 +43,7 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="/dashboard#home">Home</a></li>
           <li><a href="index.html">Informasi Program</a></li>
           <li><a href="index.html">Tips & Trik</a></li>
           <li><a href="index.html#hero" class="active">Komunitas</a></li>
@@ -108,31 +108,6 @@
         </table>
       @endif
     </section>
-
-
-    
-
-
-    <h3>Transaksi Sudah Dibayar</h3>
-    <table class="table table-bordered" id="paid-transactions">
-      <thead>
-        <tr>
-          <th>No</th>
-          <th>Jenis Transaksi</th>
-          <th>Nama Produk</th>
-          <th>Harga Produk</th>
-          <th>Nama</th>
-          <th>Tanggal</th>
-          <th>Status Pembayaran</th>
-          <th>Aksi</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Baris transaksi yang sudah dibayar akan muncul di sini setelah pembayaran berhasil -->
-      </tbody>
-    </table>
-  </section>
-
   </main>
 
   <footer id="footer" class="footer position-relative light-background">

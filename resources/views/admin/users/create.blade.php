@@ -23,9 +23,9 @@
             <form action="{{ route('admin.users.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" value="{{ old('username') }}" required>
-                    @error('username')
+                    <label for="name" class="form-label">Username</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required>
+                    @error('name')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
@@ -51,7 +51,7 @@
                     <select class="form-select @error('role_id') is-invalid @enderror" id="role_id" name="role_id" required>
                         <option value="">Select Role</option>
                         @foreach($roles as $role)
-                            <option value="{{ $role->id }}" {{ old('role_id') == $role->id ? 'selected' : '' }}>{{ $role->username }}</option>
+                            <option value="{{ $role->id }}" {{ old('role_id') == $role->id ? 'selected' : '' }}>{{ $role->name }}</option>
                         @endforeach
                     </select>
                     @error('role_id')

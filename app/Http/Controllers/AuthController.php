@@ -35,14 +35,14 @@ class AuthController extends Controller
             return redirect()->route('dashboard');
         }
 
-        return back()->withErrors(['username' => 'Username or password is incorrect']);
+        return back()->withErrors(['name' => 'Username or password is incorrect']);
     }
 
     // Menangani proses register
     public function register(Request $request)
     {
         $table= [
-            'username' => $request->username,
+            'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
             'role_id' => $request->role_id,

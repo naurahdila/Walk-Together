@@ -58,6 +58,7 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       <a class="btn-getstarted" href="/login">Logout</a>
+      <a class="btn-getstarted" href="/user/transactions">Riwayat</a>
 
     </div>
   </header>

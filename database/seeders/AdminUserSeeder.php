@@ -19,10 +19,11 @@ class AdminUserSeeder extends Seeder
 
         // Insert admin user
         DB::table('users')->insert([
-            'username' => 'Admin',
+            'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('password123'),
             'role_id' => 1
         ]);
+
     }
 }
