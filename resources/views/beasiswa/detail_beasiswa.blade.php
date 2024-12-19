@@ -27,13 +27,13 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
+  <!-- ======
   * Template Name: QuickStart
   * Template URL: https://bootstrapmade.com/quickstart-bootstrap-startup-website-template/
   * Updated: Aug 07 2024 with Bootstrap v5.3.3
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+   -->
 </head>
 
 <body class="index-page">
@@ -148,28 +148,28 @@
 
             <style>
             .card-container {
-              display: flex; 
-              flex-wrap: wrap; 
+              display: flex;
+              flex-wrap: wrap;
               justify-content: center;
-              margin-bottom: 20px; 
+              margin-bottom: 20px;
             }
 
             .card {
-              margin: 15px; 
-              border: 1px solid #ccc; 
-              border-radius: 8px; 
-              overflow: hidden; 
+              margin: 15px;
+              border: 1px solid #ccc;
+              border-radius: 8px;
+              overflow: hidden;
               width: 300px;
               box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             }
 
             .card img {
-              width: 100%; 
+              width: 100%;
               height: auto;
             }
 
             .card-content {
-              padding: 15px; 
+              padding: 15px;
             }
             </style>
 
@@ -207,7 +207,7 @@
 </main>
 
 <script>
-   
+
    function showPopup(productName, productPrice, productId) {
     document.getElementById("popup-title").innerText = productName;
     document.getElementById("product_name").value = productName;
@@ -350,10 +350,10 @@
             }
           </script>
 
-          
+
 </main>
-    
-         
+
+
 
 
 

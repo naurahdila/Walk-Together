@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\Http\Controllers;
 
 use Midtrans\Snap;
@@ -25,7 +25,7 @@ class process_registration extends Controller
     public function showProduct($category)
     {
         // Ambil semua produk dari database
-        $products = DB::table('products')->where('kategori', $category)->get();
+        $products = DB::table('products')->get();
 
         // Kirim data produk ke view
         return view('beasiswa.detail_beasiswa', compact('products'));
@@ -79,7 +79,7 @@ class process_registration extends Controller
     public function store(Request $request)
     {
 
-       
+
         // Validasi input terlebih dahulu
         $request->validate([
             'product_id' => 'required|exists:products,id',
@@ -111,12 +111,12 @@ class process_registration extends Controller
 
         // Generate order_id berdasarkan ID transaksi
         $order_id = $transactions->id;
-       
+
 
         // Update kolom order_id di database
         $transactions->update(['order_id' => $order_id]);
 
-        // dd($transactions->id);  
+        // dd($transactions->id);
 
         // Kembalikan respons JSON
         return response()->json(['transactionId' => $transactions->id, 'message' => 'Transaksi disimpan.']);
@@ -127,14 +127,14 @@ class process_registration extends Controller
     public function getSnapToken(Request $request, $id)
     {
         $id = $request->input('id');
-        
+
         // Ambil data transaksi
         $transaction = TransactionHistory::findOrFail($id);
 
         if (!$transaction) {
             return response()->json(['error' => 'Transaksi tidak ditemukan'], 404);
         }
-      
+
         // Konfigurasi Midtrans
         Config::$serverKey = 'SB-Mid-server-LsXUHP_sNBfC19yw6CjzcNg0'; // Server Key dari Midtrans
         Config::$isProduction = false; // Ubah ke true jika di production
@@ -160,19 +160,19 @@ class process_registration extends Controller
                 ],
             ],
         ];
-        // dd($params); 
+        // dd($params);
 
-       
+
         try {
             // Generate Snap Token
         $snapToken = \Midtrans\Snap::getSnapToken($params);
-    
+
             // Simpan snap_token ke dalam tabel
             $transaction->snap_token = $snapToken;
             $transaction->save();
 
             dd($request->token);
-    
+
             return response()->json([
                 'snap_token' => $snapToken,
                 'message' => 'Snap token berhasil di-generate dan disimpan.',
@@ -180,7 +180,7 @@ class process_registration extends Controller
         } catch (\Exception $e) {
             return response()->json(['error' => 'Gagal mendapatkan Snap Token: ' . $e->getMessage()], 500);
         }
-       
+
     }
 
     public function handlenotification(Request $request)
@@ -188,7 +188,7 @@ class process_registration extends Controller
         // Tangkap notifikasi dari Midtrans
         $json = $request->getContent();
         $notification = json_decode($json);
-        dd($notification);  
+        dd($notification);
 
         // Ambil data notifikasi
         $transactionStatus = $notification->transaction_status;
@@ -200,7 +200,7 @@ class process_registration extends Controller
         // Periksa transaksi di database
         $transaction = TransactionHistory::find($transactionId);
 
-        
+
 
         if (!$transaction) {
             return response()->json(['error' => 'Transaksi tidak ditemukan'], 404);

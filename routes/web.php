@@ -15,13 +15,13 @@ use Illuminate\Http\Request;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login'); // Menampilkan form login
+Route::get('/', [AuthController::class, 'showLoginForm'])->name('login'); // Menampilkan form login
 Route::post('/login', [AuthController::class, 'login'])->name('login.action'); // Proses login
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regis'); // Menampilkan form register
 Route::post('/register', [AuthController::class, 'register'])->name('register.action'); // Proses register
@@ -49,8 +49,8 @@ Route::middleware([AuthCheckMiddleware::class ])->group(function () {
     Route::post('/pendaftaraan', [process_registration::class, 'store'])->name('registration.store');
     Route::get('/pendaftaran/success', function() { return "Data Berhasil Disimpan!";})->name('registration.success');
     Route::get('/user/transactions', [user_detailtransaksi::class, 'index'])->name('user.detailtransaksi');
-    Route::post('/user/transactions', [user_detailtransaksi::class, 'index'])->name('post.detailtransaksi'); 
-  
+    Route::post('/user/transactions', [user_detailtransaksi::class, 'index'])->name('post.detailtransaksi');
+
 });
 
 

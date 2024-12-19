@@ -56,7 +56,7 @@
                     <span class="text-red-600">{{ $message }}</span>
                     @enderror
                 </div>
-            
+
                 <div class="form-group">
                     <label for="role_id">Role</label>
                     <select class="form-control form-control-lg" name="role_id" required>
@@ -68,14 +68,14 @@
                     <span class="text-red-600">{{ $message }}</span>
                     @enderror
                 </div>
-            
+
                 <div class="mt-3">
                     <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN UP</button>
                 </div>
                 <div class="text-center mt-4 font-weight-light">
                     Already have an account? <a href="login" class="text-primary">Login</a>
                 </div>
-            </form>            
+            </form>
             </div>
           </div>
         </div>
