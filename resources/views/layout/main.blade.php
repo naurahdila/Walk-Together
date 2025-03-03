@@ -41,8 +41,7 @@
           <li><a href="#about">Informasi Program</a></li>
           <li><a href="#features">Tips & Trik</a></li>
           <li><a href="#class">Kelas</a></li>
-          <li><a href="#komunitas">Komunitas</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Kontak</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -133,12 +132,6 @@
                 <h4 style="color: #333; margin: 10px 0;">Beasiswa</h4>
                 <p style="color: #555; font-size: 0.9rem;">Informasi tentang program beasiswa terbaru.</p>
                 <div style="display: flex; justify-content: center; gap: 10px; margin-top: 15px;">
-                  <button style="background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 8px 12px; border-radius: 25px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">
-                    <i class="bi bi-bookmark-fill" style="margin-right: 5px;"></i> Bookmark
-                  </button>
-                  <button style="background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 8px 12px; border-radius: 25px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">
-                    <i class="bi bi-bell-fill" style="margin-right: 5px;"></i> Notifikasi
-                  </button>
                 </div>
               </div>
             
@@ -150,12 +143,6 @@
                 <h4 style="color: #333; margin: 10px 0;">Magang</h4>
                 <p style="color: #555; font-size: 0.9rem;">Peluang magang nasional dan internasional.</p>
                 <div style="display: flex; justify-content: center; gap: 10px; margin-top: 15px;">
-                  <button style="background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 8px 12px; border-radius: 25px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">
-                    <i class="bi bi-bookmark-fill" style="margin-right: 5px;"></i> Bookmark
-                  </button>
-                  <button style="background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 8px 12px; border-radius: 25px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">
-                    <i class="bi bi-bell-fill" style="margin-right: 5px;"></i> Notifikasi
-                  </button>
                 </div>
               </div>
             
@@ -167,12 +154,7 @@
                 <h4 style="color: #333; margin: 10px 0;">IISMA</h4>
                 <p style="color: #555; font-size: 0.9rem;">Program pertukaran mahasiswa internasional.</p>
                 <div style="display: flex; justify-content: center; gap: 10px; margin-top: 15px;">
-                  <button style="background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 8px 12px; border-radius: 25px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">
-                    <i class="bi bi-bookmark-fill" style="margin-right: 5px;"></i> Bookmark
-                  </button>
-                  <button style="background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 8px 12px; border-radius: 25px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">
-                    <i class="bi bi-bell-fill" style="margin-right: 5px;"></i> Notifikasi
-                  </button>
+
                 </div>
               </div>
             
@@ -184,12 +166,7 @@
                 <h4 style="color: #333; margin: 10px 0;">Akademis</h4>
                 <p style="color: #555; font-size: 0.9rem;">Informasi akademis untuk perkembangan karir Anda.</p>
                 <div style="display: flex; justify-content: center; gap: 10px; margin-top: 15px;">
-                  <button style="background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 8px 12px; border-radius: 25px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">
-                    <i class="bi bi-bookmark-fill" style="margin-right: 5px;"></i> Bookmark
-                  </button>
-                  <button style="background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 8px 12px; border-radius: 25px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">
-                    <i class="bi bi-bell-fill" style="margin-right: 5px;"></i> Notifikasi
-                  </button>
+                  
                 </div>
               </div>
               </div>
@@ -345,7 +322,7 @@
       </div>
     </section><!-- /Services Section -->
     
-    <!-- Pricing Section -->
+    {{-- <!-- Pricing Section -->
     <section id="komunitas" class="pricing section">
       <div class="container">
         <div class="container section-title" data-aos="fade-up">
@@ -360,14 +337,14 @@
               Ingin berbagi pengalaman, berdiskusi, dan berinteraksi dengan sesama pejuang beasiswa dan pengembangan karier?
             </p>
             <p>Nikmati suasana belajar yang suportif, dapatkan update informasi terbaru, dan jalin relasi dengan teman-teman yang memiliki tujuan serupa."</p>
-            <a href="#" class="btn more-btn">Gabung Sekarang</a>
+            <a href="/posts" class="btn more-btn">Gabung Sekarang</a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="200">
           <img src="assets/img/features-2.jpg" class="img-fluid" alt="">
         </div>
       </div>
-  </section><!-- /Pricing Section -->
+  </section><!-- /Pricing Section --> --}}
 
 <!-- artikel section -->
 

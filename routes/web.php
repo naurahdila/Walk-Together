@@ -1,33 +1,35 @@
 <?php
 
 
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\transaksiAdmin;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\UserDetailTransaksi;
+use App\Http\Controllers\imageController;
+use App\Http\Controllers\articleController;
 use App\Http\Middleware\AuthCheckMiddleware;
+use App\Http\Controllers\UserDetailTransaksi;
+
+
 use App\Http\Controllers\process_registration;
 use App\Http\Controllers\user_detailtransaksi;
 use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\articleController;
-use App\Http\Controllers\imageController;
-use App\Http\Controllers\transaksiAdmin;
-
-
-use Illuminate\Http\Request;
 
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login'); // Menampilkan form login
+Route::get('/', [AuthController::class, 'showLoginForm'])->name('login'); // Menampilkan form login
 Route::post('/login', [AuthController::class, 'login'])->name('login.action'); // Proses login
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regis'); // Menampilkan form register
 Route::post('/register', [AuthController::class, 'register'])->name('register.action'); // Proses register
@@ -119,6 +121,12 @@ Route::post('/transaction/update-status/{id}', function ($id, Request $request) 
 
 
 Route::post('/update-status-pembayaran', [UserDetailTransaksi::class, 'updateStatusPembayaran']);
+
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
+Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 
 
