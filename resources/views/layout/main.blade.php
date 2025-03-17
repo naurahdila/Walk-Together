@@ -323,7 +323,7 @@
     </section><!-- /Services Section -->
     
     {{-- <!-- Pricing Section -->
-    <section id="komunitas" class="pricing section">
+    <section id=" " class="pricing section">
       <div class="container">
         <div class="container section-title" data-aos="fade-up">
           <h2>Komunitas</h2>

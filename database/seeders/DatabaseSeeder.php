@@ -8,24 +8,31 @@ use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // Menjalankan seeder untuk Role, AdminUser, dan Product
+        // Buat roles dulu sebelum menjalankan seeder lain
+        $adminRole = Role::firstOrCreate(['name' => 'admin']);
+        $userRole = Role::firstOrCreate(['name' => 'user']);
+
+        // Jalankan Seeder lain setelah RoleSeeder dijalankan
         $this->call([
-            RoleSeeder::class,
-            AdminUserSeeder::class,
-            ProductSeeder::class, // Pastikan nama class sesuai
+            ProductSeeder::class,
         ]);
 
-        // Membuat user secara manual (contoh)
+        // Buat admin
         User::factory()->create([
-            'name' => 'Test',
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('12345678'),
+            'role_id' => $adminRole->id,
+        ]);
+
+        // Buat user biasa
+        User::factory()->create([
+            'name' => 'Test User',
             'email' => 'test@gmail.com',
             'password' => Hash::make('12345678'),
-            'role_id' => 2
+            'role_id' => $userRole->id,
         ]);
     }
 }
